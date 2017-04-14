@@ -90,7 +90,7 @@ INT			[0-9]+
 %%
 {WHITE_SPACE}		{adjust(); continue;}
 {LINE_TERMINATOR}	{adjust(); MatReader_ErrorMsg_Newline(); continue;}
-{LBRACK}			{adjust(); MatReader_ErrorMsg_Log("["); return LBRACK;}
+{LBRACK}			{adjust(); MatReader_ErrorMsg_Log("[ "); return LBRACK;}
 {RBRACK}			{adjust(); MatReader_ErrorMsg_Log("]"); return RBRACK;}
 {DIVIDE}			{adjust(); MatReader_ErrorMsg_Log("/"); return DIVIDE;}
 {SEMICOLON}			{adjust(); MatReader_ErrorMsg_Log(";"); return SEMICOLON;}
