@@ -111,4 +111,5 @@ all:
 	@echo "********************"
 	@echo "\n"	
 	$(Lini_PROGRAM) $(INPUT) $(OUTPUT)
-
+	
+	cp ./FOLDER_6_Lini/Lini ./Lini 
