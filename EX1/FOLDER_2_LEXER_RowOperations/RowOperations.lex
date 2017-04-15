@@ -111,7 +111,7 @@ LEFT_RIGHT_ARROW	"<->"
 {ROW}				{
 						adjust();
 						RowOperations_ErrorMsg_Log("ROW");
-						return INDEX;
+						return ROW;
 				}
 {INDEX}				{
 						adjust();
@@ -119,7 +119,5 @@ LEFT_RIGHT_ARROW	"<->"
 						RowOperations_ErrorMsg_Log("(%d) ",bblval.gval.ival);
 						return INDEX;
 				}
-
 {LEFT_ARROW}			{adjust(); RowOperations_ErrorMsg_Log("<- ");  return LEFT_ARROW;}	
 {LEFT_RIGHT_ARROW}		{adjust(); RowOperations_ErrorMsg_Log("<-> ");  return LEFT_RIGHT_ARROW;}	
-
