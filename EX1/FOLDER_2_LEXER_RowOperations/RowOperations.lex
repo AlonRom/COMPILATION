@@ -111,7 +111,7 @@ LEFT_RIGHT_ARROW	"<->"
 {ROW}				{
 						adjust();
 						bblval.gval.ival=atoi(bbtext + 1);
-						RowOperations_ErrorMsg_Log("ROW()", bblval.gval.ival);
+						RowOperations_ErrorMsg_Log("ROW(%d)", bblval.gval.ival);
 						return ROW;
 				}
 
