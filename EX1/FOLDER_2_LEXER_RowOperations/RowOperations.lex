@@ -90,6 +90,7 @@ ROW			"R"|"r"
 {LINE_TERMINATOR}	{adjust(); RowOperations_ErrorMsg_Newline(); continue;}
 {PLUS}				{adjust(); RowOperations_ErrorMsg_Log("+ ");  return PLUS;}
 {MINUS}				{adjust(); RowOperations_ErrorMsg_Log("- ");  return MINUS;}
+{DIVIDE}			{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE;}
 {INT}				{
 						adjust();
 						bblval.gval.ival=atoi(bbtext);
