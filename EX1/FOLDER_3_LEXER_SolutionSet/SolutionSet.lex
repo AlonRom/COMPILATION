@@ -94,5 +94,11 @@ COMMA			","
 						cclval.gval.ival=atoi(cctext);
 						SolutionSet_ErrorMsg_Log("INT(%d)",cclval.gval.ival);
 						return INT;
-					}
+				}
+{PLUS}			{adjust(); SolutionSet_ErrorMsg_Log("+");  return PLUS;}
+{DIVIDE}			{adjust(); SolutionSet_ErrorMsg_Log("/");  return DIVIDE;}
+{SPAN}			{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
+{COMMA}			{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+
+				
 
