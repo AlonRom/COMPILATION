@@ -79,6 +79,7 @@ DIVIDE	"/"
 /* INT */
 /*******/
 INT			[0-9]+
+NINT 			-[0-9]+		  
 		
 /*********/
 /* RULES */
@@ -91,6 +92,12 @@ INT			[0-9]+
 {DIVIDE}			{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE;}
 {SEMICOLON}			{adjust(); MatReader_ErrorMsg_Log("; "); return SEMICOLON;}
 {INT}				{
+					adjust();
+					aalval.gval.ival=atoi(aatext);
+					MatReader_ErrorMsg_Log("INT(%d) ",aalval.gval.ival);
+					return INT;
+				}
+{NINT}				{
 					adjust();
 					aalval.gval.ival=atoi(aatext);
 					MatReader_ErrorMsg_Log("INT(%d) ",aalval.gval.ival);
