@@ -104,6 +104,6 @@ LEFT_RIGHT_ARROW	"<->"
 						return INT;
 				}
 {ROW}				{adjust(); RowOperations_ErrorMsg_Log("ROW");  return ROW;}
-{LEFT_ARROW}				{adjust(); RowOperations_ErrorMsg_Log("<-");  return LEFT_ARROW;}	
-{LEFT_RIGHT_ARROW}				{adjust(); RowOperations_ErrorMsg_Log("<->");  return LEFT_RIGHT_ARROW;}	
+{LEFT_ARROW}				{adjust(); RowOperations_ErrorMsg_Log("<- ");  return LEFT_ARROW;}	
+{LEFT_RIGHT_ARROW}				{adjust(); RowOperations_ErrorMsg_Log("<-> ");  return LEFT_RIGHT_ARROW;}	
 
