@@ -90,7 +90,6 @@ INT			[+-0-9]+
 {RBRACK}			{adjust(); MatReader_ErrorMsg_Log("]"); return RBRACK;}
 {DIVIDE}			{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE;}
 {SEMICOLON}			{adjust(); MatReader_ErrorMsg_Log("; "); return SEMICOLON;}
-{MINUS}                         {adjust(); MatReader_ErrorMsg_Log("-"); return MINUS;}
 {INT}				{
 					adjust();
 					aalval.gval.ival=atoi(aatext);
