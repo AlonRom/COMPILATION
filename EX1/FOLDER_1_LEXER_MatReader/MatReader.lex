@@ -73,7 +73,6 @@ SEMICOLON	";"
 /* BINOPS */
 /**********/
 DIVIDE	"/"
-ALSODIVIDE	"\"
 
 /*******/
 /* INT */
@@ -103,4 +102,3 @@ NINT 			-[0-9]+
 					MatReader_ErrorMsg_Log("INT(%d) ",aalval.gval.ival);
 					return INT;
 				}
-{ALSODIVIDE}   			{adjust(); MatReader_ErrorMsg_Log("/ "); continue;}
