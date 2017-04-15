@@ -85,7 +85,7 @@ INDEX                   [0-9]+
 /*******/
 /* ROW */
 /*******/
-ROW			["R"|"r"][0-9]+
+ROW			["R"|"r"]
 
 /*******/
 /* ARROW */
@@ -110,9 +110,14 @@ LEFT_RIGHT_ARROW	"<->"
 				}
 {ROW}				{
 						adjust();
+						RowOperations_ErrorMsg_Log("ROW");
+						return INDEX;
+				}
+{INDEX}				{
+						adjust();
 						bblval.gval.ival=atoi(bbtext);
-						RowOperations_ErrorMsg_Log("ROW(%d) ",bblval.gval.ival);
-						return ROW;
+						RowOperations_ErrorMsg_Log("(%d) ",bblval.gval.ival);
+						return INDEX;
 				}
 {LEFT_ARROW}			{adjust(); RowOperations_ErrorMsg_Log("<- ");  return LEFT_ARROW;}	
 {LEFT_RIGHT_ARROW}		{adjust(); RowOperations_ErrorMsg_Log("<-> ");  return LEFT_RIGHT_ARROW;}	
