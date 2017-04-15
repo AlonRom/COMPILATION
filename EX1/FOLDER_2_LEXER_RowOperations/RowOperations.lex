@@ -75,7 +75,12 @@ DIVIDE	"/"
 /*******/
 /* INT */
 /*******/
-INT			[0-9]+
+INT			[0-9]+|-[0-9]+
+
+/*******/
+/* INDEX */
+/*******/
+INDEX                   [0-9]+
 
 /*******/
 /* ROW */
@@ -100,10 +105,16 @@ LEFT_RIGHT_ARROW	"<->"
 {INT}				{
 						adjust();
 						bblval.gval.ival=atoi(bbtext);
-						RowOperations_ErrorMsg_Log("(%d) ",bblval.gval.ival);
+						RowOperations_ErrorMsg_Log("INT(%d) ",bblval.gval.ival);
 						return INT;
 				}
-{ROW}				{adjust(); RowOperations_ErrorMsg_Log("ROW");  return ROW;}
-{LEFT_ARROW}				{adjust(); RowOperations_ErrorMsg_Log("<- ");  return LEFT_ARROW;}	
-{LEFT_RIGHT_ARROW}				{adjust(); RowOperations_ErrorMsg_Log("<-> ");  return LEFT_RIGHT_ARROW;}	
+{ROW}				{adjust(); RowOperations_ErrorMsg_Log("ROW");  return INDEX;}
+{INDEX}				{
+						adjust();
+						bblval.gval.ival=atoi(bbtext);
+						RowOperations_ErrorMsg_Log("(%d) ",bblval.gval.ival);
+						return INDEX;
+				}
+{LEFT_ARROW}			{adjust(); RowOperations_ErrorMsg_Log("<- ");  return LEFT_ARROW;}	
+{LEFT_RIGHT_ARROW}		{adjust(); RowOperations_ErrorMsg_Log("<-> ");  return LEFT_RIGHT_ARROW;}	
 
