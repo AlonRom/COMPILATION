@@ -93,13 +93,8 @@ ROW			"R"|"r"
 {INT}				{
 						adjust();
 						bblval.gval.ival=atoi(bbtext);
-						RowOperations_ErrorMsg_Log("INT(%d)",bblval.gval.ival);
+						RowOperations_ErrorMsg_Log("(%d)",bblval.gval.ival);
 						return INT;
 				}
-{ROW}				{
-						adjust();
-						bblval.gval.ival=atoi(bbtext);
-						RowOperations_ErrorMsg_Log("ROW(%d)",bblval.gval.ival);
-						return ROW;
-				}					
+{ROW}				{adjust(); RowOperations_ErrorMsg_Log("ROW");  return ROW;}			
 
