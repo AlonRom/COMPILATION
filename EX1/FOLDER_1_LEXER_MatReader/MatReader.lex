@@ -89,7 +89,7 @@ NINT 			-[0-9]+
 {LBRACK}			{adjust(); MatReader_ErrorMsg_Log("[ "); return LBRACK;}
 {RBRACK}			{adjust(); MatReader_ErrorMsg_Log("]"); return RBRACK;}
 {DIVIDE}			{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE;}
-"\"				{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE;}
+"\"				{adjust(); MatReader_ErrorMsg_Log("/ ");}
 {SEMICOLON}			{adjust(); MatReader_ErrorMsg_Log("; "); return SEMICOLON;}
 {INT}				{
 					adjust();
