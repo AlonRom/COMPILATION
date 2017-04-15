@@ -73,7 +73,6 @@ SEMICOLON	";"
 /* BINOPS */
 /**********/
 DIVIDE	"/"
-AAA  "\"
 
 /*******/
 /* INT */
@@ -101,6 +100,5 @@ NINT 			-[0-9]+
 					adjust();
 					aalval.gval.ival=atoi(aatext);
 					MatReader_ErrorMsg_Log("INT(%d) ",aalval.gval.ival);
-					return INT;
+					return NINT;
 				}
-{AAA}			{adjust(); MatReader_ErrorMsg_Log("dddd"); return AAA;}
