@@ -73,6 +73,7 @@ SEMICOLON	";"
 /* BINOPS */
 /**********/
 DIVIDE	"/"
+DIVIDE_2 "\"
 
 /*******/
 /* MINUS */
@@ -93,6 +94,7 @@ INT			[0-9]+
 {LBRACK}			{adjust(); MatReader_ErrorMsg_Log("[ "); return LBRACK;}
 {RBRACK}			{adjust(); MatReader_ErrorMsg_Log("]"); return RBRACK;}
 {DIVIDE}			{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE;}
+{DIVIDE_2}			{adjust(); MatReader_ErrorMsg_Log("/ "); return DIVIDE_2;}
 {SEMICOLON}			{adjust(); MatReader_ErrorMsg_Log("; "); return SEMICOLON;}
 {MINUS}                         {adjust(); MatReader_ErrorMsg_Log("-"); return MINUS;}
 {INT}				{
