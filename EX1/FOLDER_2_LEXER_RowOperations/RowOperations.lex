@@ -85,7 +85,7 @@ INDEX                   [0-9]+
 /*******/
 /* ROW */
 /*******/
-ROW			["R"|"r"]
+ROW			["R"|"r"][0-9]+
 
 /*******/
 /* ARROW */
@@ -110,8 +110,8 @@ LEFT_RIGHT_ARROW	"<->"
 				}
 {ROW}				{
 						adjust();
-						RowOperations_ErrorMsg_Log("ROW");
-						return INDEX;
+						RowOperations_ErrorMsg_Log(bbtext);
+						return ROW;
 				}
 {INDEX}				{
 						adjust();
