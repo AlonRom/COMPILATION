@@ -98,9 +98,9 @@ INT			[0-9]+
 {SEMICOLON}			{adjust(); MatReader_ErrorMsg_Log("; "); return SEMICOLON;}
 {MINUS}                         {adjust(); MatReader_ErrorMsg_Log("-"); return MINUS;}
 {INT}				{
-						adjust();
-						aalval.gval.ival=atoi(aatext);
-						MatReader_ErrorMsg_Log("INT(%d) ",aalval.gval.ival);
-						return INT;
-					}
-
+					adjust();
+					aalval.gval.ival=atoi(aatext);
+					MatReader_ErrorMsg_Log("INT(%d) ",aalval.gval.ival);
+					return INT;
+				}
+				
