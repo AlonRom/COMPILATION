@@ -76,6 +76,11 @@ DIVIDE	"/"
 /* INT */
 /*******/
 INT			[0-9]+
+
+/*******/
+/* ROW */
+/*******/
+ROW			"R"|"r"
 		
 /*********/
 /* RULES */
@@ -91,4 +96,5 @@ INT			[0-9]+
 						RowOperations_ErrorMsg_Log("INT(%d)",bblval.gval.ival);
 						return INT;
 					}
+{ROW}				{adjust(); RowOperations_ErrorMsg_Log("ROW");  return ROW;}					
 
