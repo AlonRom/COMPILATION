@@ -98,7 +98,7 @@ COMMA			","
 				}
 {PLUS}			{adjust(); SolutionSet_ErrorMsg_Log("+");  return PLUS;}
 {DIVIDE}		{adjust(); SolutionSet_ErrorMsg_Log("/");  return DIVIDE;}
-{MINUS}			{adjust(); SolutionSet_ErrorMsg_Log("- ");  return MINUS;}
+{MINUS}			{adjust(); SolutionSet_ErrorMsg_Log("-");  return MINUS;}
 {SPAN}			{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
 {COMMA}			{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
 
