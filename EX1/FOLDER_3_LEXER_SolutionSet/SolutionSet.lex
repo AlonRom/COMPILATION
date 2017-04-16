@@ -71,11 +71,12 @@ RBRACE	"}"
 /**********/
 PLUS	"+"
 DIVIDE	"/"
+MINUS "-"
 
 /*******/
 /* INT */
 /*******/
-INT				[0-9]+|-[0-9]+
+INT				[0-9]+
 SPAN			"SP"
 COMMA			","
 		
@@ -96,7 +97,8 @@ COMMA			","
 						return INT;
 				}
 {PLUS}			{adjust(); SolutionSet_ErrorMsg_Log("+");  return PLUS;}
-{DIVIDE}			{adjust(); SolutionSet_ErrorMsg_Log("/");  return DIVIDE;}
+{DIVIDE}		{adjust(); SolutionSet_ErrorMsg_Log("/");  return DIVIDE;}
+{MINUS}			{adjust(); RowOperations_ErrorMsg_Log("- ");  return MINUS;}
 {SPAN}			{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
 {COMMA}			{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
 
