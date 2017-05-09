@@ -414,7 +414,6 @@ void AfterSubtract()
 		Eat(ROW);
 		Eat(LINE_TERMINATOR);
 		currentRow++;
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
 		break;
 	case(LINE_TERMINATOR):
 		Eat(LINE_TERMINATOR);
