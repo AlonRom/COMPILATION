@@ -16,6 +16,9 @@
 #include "RowOperations_ErrorMsg.h"
 #include "RowOperations_Tokens.h"
 #include "SolutionSet_ErrorMsg.h"
+#include "SolutionSet_Tokens.h"
+
+
 
 #define EOF 0
 
@@ -44,6 +47,50 @@ void Eat(int expectedToken);
 int tok;
 bool hasError;
 int currentRow;
+
+/***************************/
+/* SOLUTION SET VARIABLES  */
+/***************************/
+
+int size = 0;
+int commaCounter = 0;
+int commaDefCounter = 0;
+int coloum = 0;
+//-- to enable debug set to 1
+int debugEnabled = 1;
+
+
+/***************************/
+/* SOLUTION SET METHODS    */
+/***************************/
+
+void SolutionOperationList();
+void Lbrace();
+void Operation();
+
+void StartVector();
+void AfterRparen();
+void AfterInt();
+void AfterComma();
+void AfterRbrace();
+void AfterPlus();
+void AfterSpan();
+void AfterLparen();
+void AfterDivide();
+void AfterMinus();
+
+void Logging(int debug,char* string,int row, int coloum,int token)
+{
+	if (debug == 1)
+	{
+		if(debugEnabled)
+			SolutionSet_ErrorMsg_Log("DEBUG: MESSAGE %s, ROW %d, COLOUM %d, TOKEN %d \n",string,row,coloum,token);
+	}
+	else
+	{
+		SolutionSet_ErrorMsg_Log("ERROR: MESSAGE %s, ROW %d, COLOUM %d, TOKEN %d \n",string,row,coloum,token);
+	}
+}
 
 /*****************/
 /* START OF CODE */
@@ -82,6 +129,18 @@ int main(int argc, char **argv)
 		RowOperations_ErrorMsg_Log("OK\n");
 	tok = bblex(); //make sure its EOF	
 
+	//-- solution set
+
+	hasError = 0;
+	currentRow = 0;
+	tok = cclex();
+
+	SolutionOperationList();
+
+	tok = cclex();
+
+
+
 
 
 	
@@ -90,6 +149,317 @@ int main(int argc, char **argv)
 	
 	return 0;
 }
+
+
+void SolutionOperationList()
+{
+	currentRow++;
+	switch (tok)
+	{
+		// rowOperationList ---> rowOperation rowOperationList
+	case(LBRACE):
+		coloum++;
+		EatS(LBRACE);
+		coloum++;
+		Lbrace();
+		SolutionOperationList();
+		break;
+
+	case(EOF):
+		Logging(1,"EOF",0,0,0);
+		break;
+
+	default:
+		if (hasError)
+			//Logging("Error(%d)\n\n", currentRow);
+			Logging(0,"Error", currentRow, coloum,tok);
+		break;
+	}
+}
+
+void Lbrace()
+{
+	switch (tok)
+	{
+	case(LPAREN):
+		coloum++;
+		EatS(LPAREN);
+		AfterLparen();
+		break;
+
+	default:
+		//Logging("Error(%d)\n\n", currentRow);
+		Logging(0,"Error", currentRow, coloum,tok);
+		break;
+		//exit(0);
+	}
+}
+
+void AfterLparen()
+{
+	//--If there were any commase left from vector seperation {(),()} make the counter zero
+	if (commaCounter > 0)
+	{
+		commaCounter = 0;
+	}
+	switch (tok)
+	{
+	case(INT):
+		coloum++;
+		EatS(INT);
+		AfterInt();
+		break;
+	case(LBRACE):
+		coloum++;
+		EatS(LBRACE);
+		Lbrace();
+		break;
+	case(MINUS):
+		coloum++;
+		EatS(MINUS);
+		AfterMinus();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+
+void OperationS()
+{
+	switch (tok)
+	{
+	case(LPAREN):
+		coloum++;
+		EatS(LPAREN);
+		StartVector();
+		break;
+	default:
+		SolutionSet_ErrorMsg_Log("Error(%d) (%d)\n\n", currentRow, coloum);
+		break;
+	}
+}
+
+void StartVector()
+{
+	commaCounter = 0;
+	switch (tok)
+	{
+	case(INT):
+		coloum++;
+		EatS(INT);
+		AfterInt();
+		break;
+	case(RPAREN):
+		coloum++;
+		EatS(RPAREN);
+		AfterRparen();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+void AfterInt()
+{
+	switch (tok)
+	{
+	case(RPAREN):
+		coloum++;
+		EatS(RPAREN);
+		AfterRparen();
+		break;
+	case(COMMA):
+		coloum++;
+		EatS(COMMA);
+		AfterComma();
+		break;
+	case(DIVIDE):
+		coloum++;
+		EatS(DIVIDE);
+		AfterDivide();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+void AfterDivide()
+{
+	switch (tok)
+	{
+	case(INT):
+		coloum++;
+		EatS(INT);
+		AfterInt();
+		break;
+	case(MINUS):
+		coloum++;
+		EatS(MINUS);
+		AfterMinus();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+void AfterMinus()
+{
+	switch (tok)
+	{
+	case(INT):
+		coloum++;
+		EatS(INT);
+		AfterInt();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+
+void AfterRparen()
+{
+	//-- Case it's first vector ending
+	if (commaDefCounter == 0)
+	{
+		//-- Set definite counter to comma current counter
+		commaDefCounter = commaCounter;
+		//-- Make current counter aero
+		commaCounter = 0;
+	}
+	//-- Case it's not first vector
+	else
+	{
+		//-- If amount commas different then definite amount commase throw exception and it's not the start of a new vector
+		if (commaCounter != commaDefCounter && tok != 0)
+		{
+			Logging(0,"Error --> Vectors dimensions are not matching \n \n", currentRow, coloum,tok);
+			getchar();
+			exit(0);
+		}
+	}
+	commaCounter = 0;
+	switch (tok)
+	{
+	case(RBRACE):
+		coloum++;
+		EatS(RBRACE);
+		AfterRbrace();
+		break;
+	case (PLUS):
+		coloum++;
+		EatS(PLUS);
+		AfterPlus();
+		break;
+	case(COMMA):
+		coloum++;
+		EatS(COMMA);
+		AfterComma();
+		break;
+	default:
+		if (tok != 0)
+		{
+			Logging(0, "Error", currentRow, coloum, tok);
+		}
+		else
+		{
+			Logging(1, " === NO ERRORS IN FILE === ", 0, 0, 0);
+		}
+		break;
+	}
+
+}
+
+void AfterRbrace()
+{
+	switch (tok)
+	{
+	case(RBRACE):
+		coloum++;
+		EatS(RBRACE);
+		AfterRbrace();
+		break;
+	case(PLUS):
+		coloum++;
+		EatS(PLUS);
+		AfterPlus();
+		break;
+	case(RPAREN):
+		coloum++;
+		EatS(RPAREN);
+		AfterRparen();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+void AfterPlus()
+{
+	switch (tok)
+	{
+	case(SPAN):
+		coloum++;
+		EatS(SPAN);
+		AfterSpan();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+
+void AfterComma()
+{
+	commaCounter++;
+	switch (tok)
+	{
+	case(INT):
+		coloum++;
+		EatS(INT);
+		AfterInt();
+		break;
+	case(LPAREN):
+		coloum++;
+		EatS(LPAREN);
+		StartVector();
+		break;
+	case(MINUS):
+		coloum++;
+		EatS(MINUS);
+		AfterMinus();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+void AfterSpan()
+{
+	switch (tok)
+	{
+	case(LPAREN):
+		coloum++;
+		EatS(LPAREN);
+		AfterLparen();
+		break;
+	default:
+		Logging(0, "Error", currentRow, coloum, tok);
+		break;
+	}
+}
+
+
+
 
 void Eat(int expectedToken)
 {
@@ -101,6 +471,26 @@ void Eat(int expectedToken)
 	{
 		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
 		hasError = 1;
+	}
+}
+
+void EatS(int expectedToken)
+{
+	if (tok == expectedToken)
+	{
+		//Logging("EatS: (%d)\n", tok);
+		Logging(1,"EatS:",currentRow,coloum, tok);
+		tok = cclex();
+		if (tok == ERROR)
+		{
+			Logging(0, "Wrong Char", currentRow, coloum, tok);
+		}
+	}
+	else
+	{
+		Logging(0,"Error",currentRow,coloum,tok);
+		hasError = 1;
+		//exit(0);
 	}
 }
 

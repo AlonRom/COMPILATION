@@ -301,12 +301,12 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 13
-#define YY_END_OF_BUFFER 14
+#define YY_NUM_RULES 14
+#define YY_END_OF_BUFFER 15
 static yyconst short int yy_accept[20] =
     {   0,
-        0,    0,   14,   13,    1,    2,    3,    4,    8,   12,
-       10,    9,    7,   13,    5,    6,    7,   11,    0
+        0,    0,   15,   13,    1,    2,    3,    4,    9,    8,
+       10,   11,   12,   13,    5,    6,   12,    7,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -426,10 +426,7 @@ static void adjust(void)
 	charPos += ccleng;
 }
 
-/***********/
-/* YYSTYPE */
-/***********/
-YYSTYPE cclval;
+
 
 /*****************/
 /* UNIQUE PREFIX */
@@ -452,7 +449,7 @@ YYSTYPE cclval;
 /*********/
 /* RULES */
 /*********/
-#line 456 "./FOLDER_3_LEXER_SolutionSet/SolutionSet_Lexer.c"
+#line 453 "./FOLDER_3_LEXER_SolutionSet/SolutionSet_Lexer.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -603,9 +600,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 86 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 83 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 
-#line 609 "./FOLDER_3_LEXER_SolutionSet/SolutionSet_Lexer.c"
+#line 606 "./FOLDER_3_LEXER_SolutionSet/SolutionSet_Lexer.c"
 
 	if ( yy_init )
 		{
@@ -690,75 +687,80 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 87 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 84 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 {adjust(); continue;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 88 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 85 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 89 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 86 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Log("(");  return LPAREN;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 90 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 87 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Log(")");  return RPAREN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 91 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 88 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Log("{");  return LBRACE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 92 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 89 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Log("}");  return RBRACE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 93 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
-{
-						adjust();
-						cclval.gval.ival=atoi(cctext);
-						SolutionSet_ErrorMsg_Log("INT(%d)",cclval.gval.ival);
-						return INT;
-				}
+#line 90 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 99 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("+");  return PLUS;}
+#line 91 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 100 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("/");  return DIVIDE;}
+#line 92 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{adjust(); /* RowOperations_ErrorMsg_Log("+ ");  */ return PLUS;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 101 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("-");  return MINUS;}
+#line 93 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{adjust(); /* RowOperations_ErrorMsg_Log("- "); */  return MINUS;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 102 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
+#line 94 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{adjust(); /*  RowOperations_ErrorMsg_Log("/ "); */  return DIVIDE;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 103 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+#line 95 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{
+                                                adjust();
+                                                //bblval.gval.ival=atoi(bbtext);
+                                                //RowOperations_ErrorMsg_Log("INT(%d) ",bblval.gval.ival);
+                                                return INT;
+                                }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 107 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 101 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+{adjust(); /* RowOperations_ErrorMsg_Log("ERROR ");*/   return ERROR;}
+	YY_BREAK
+case 14:
+YY_RULE_SETUP
+#line 105 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
 ECHO;
 	YY_BREAK
-#line 762 "./FOLDER_3_LEXER_SolutionSet/SolutionSet_Lexer.c"
+#line 764 "./FOLDER_3_LEXER_SolutionSet/SolutionSet_Lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1634,4 +1636,4 @@ int main()
 	return 0;
 	}
 #endif
-#line 107 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"
+#line 105 "./FOLDER_3_LEXER_SolutionSet/SolutionSet.lex"

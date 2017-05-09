@@ -36,10 +36,7 @@ static void adjust(void)
 	charPos += ccleng;
 }
 
-/***********/
-/* YYSTYPE */
-/***********/
-YYSTYPE cclval;
+
 
 %}
 
@@ -84,23 +81,24 @@ COMMA			","
 /* RULES */
 /*********/
 %%
-{WHITE_SPACE}		{adjust(); continue;}
-{LINE_TERMINATOR}	{adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
+{WHITE_SPACE}		        {adjust(); continue;}
+{LINE_TERMINATOR}	        {adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
 {LPAREN}			{adjust(); SolutionSet_ErrorMsg_Log("(");  return LPAREN;}
 {RPAREN}			{adjust(); SolutionSet_ErrorMsg_Log(")");  return RPAREN;}
 {LBRACE}			{adjust(); SolutionSet_ErrorMsg_Log("{");  return LBRACE;}
 {RBRACE}			{adjust(); SolutionSet_ErrorMsg_Log("}");  return RBRACE;}
-{INT}				{
-						adjust();
-						cclval.gval.ival=atoi(cctext);
-						SolutionSet_ErrorMsg_Log("INT(%d)",cclval.gval.ival);
-						return INT;
-				}
-{PLUS}			{adjust(); SolutionSet_ErrorMsg_Log("+");  return PLUS;}
-{DIVIDE}		{adjust(); SolutionSet_ErrorMsg_Log("/");  return DIVIDE;}
-{MINUS}			{adjust(); SolutionSet_ErrorMsg_Log("-");  return MINUS;}
-{SPAN}			{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
-{COMMA}			{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+{SPAN}			        {adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
+{COMMA}			        {adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+{PLUS}                          {adjust(); /* RowOperations_ErrorMsg_Log("+ ");  */ return PLUS;}
+{MINUS}                         {adjust(); /* RowOperations_ErrorMsg_Log("- "); */  return MINUS;}
+{DIVIDE}                        {adjust(); /*  RowOperations_ErrorMsg_Log("/ "); */  return DIVIDE;}
+{INT}                           {
+                                                adjust();
+                                                //bblval.gval.ival=atoi(bbtext);
+                                                //RowOperations_ErrorMsg_Log("INT(%d) ",bblval.gval.ival);
+                                                return INT;
+                                }
+.                               {adjust(); /* RowOperations_ErrorMsg_Log("ERROR ");*/   return ERROR;}
 
 				
 
