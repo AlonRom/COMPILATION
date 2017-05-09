@@ -52,11 +52,16 @@ YYSTYPE bblval;
 /* COMMON REGEXP(s) */
 /********************/
 
+/*************/
+/* NEW LINES */
+/*************/
+NEW_LINE		\n|\r
+
 /**********/
 /* SPACES */
 /**********/
 WHITE_SPACE		" "|\t
-LINE_TERMINATOR	\n
+LINE_TERMINATOR       	\n|\r
 
 /***************/
 /* PARENTHESES */
@@ -70,7 +75,7 @@ RPAREN	")"
 PLUS	"+"
 MINUS	"-"
 TIMES	"*"
-DIVIDE	"/"
+DIVIDE	"/"|\\
 
 /*******/
 /* INT */
@@ -80,12 +85,12 @@ INT			[0-9]+
 /*******/
 /* INDEX */
 /*******/
-INDEX                   [0-9]+
+INDEX                   [1-4]
 
 /*******/
 /* ROW */
 /*******/
-ROW			["R"|"r"][0-9]+
+ROW			["R"|"r"][1-4]
 
 /*******/
 /* ARROW */
@@ -98,21 +103,22 @@ LEFT_RIGHT_ARROW	"<->"
 /*********/
 %%
 {WHITE_SPACE}		{adjust(); continue;}
-{LINE_TERMINATOR}	{adjust(); RowOperations_ErrorMsg_Newline(); continue;}
-{PLUS}				{adjust(); RowOperations_ErrorMsg_Log("+ ");  return PLUS;}
-{MINUS}				{adjust(); RowOperations_ErrorMsg_Log("- ");  return MINUS;}
-{DIVIDE}			{adjust(); RowOperations_ErrorMsg_Log("/ "); return DIVIDE;}
+{LINE_TERMINATOR}	{adjust(); /*  RowOperations_ErrorMsg_Newline(); */  return LINE_TERMINATOR;}
+{PLUS}				{adjust(); /* RowOperations_ErrorMsg_Log("+ ");  */ return PLUS;}
+{MINUS}				{adjust(); /* RowOperations_ErrorMsg_Log("- "); */  return MINUS;}
+{DIVIDE}			{adjust(); /*  RowOperations_ErrorMsg_Log("/ "); */  return DIVIDE;}
 {INT}				{
 						adjust();
-						bblval.gval.ival=atoi(bbtext);
-						RowOperations_ErrorMsg_Log("INT(%d) ",bblval.gval.ival);
+						//bblval.gval.ival=atoi(bbtext);
+						//RowOperations_ErrorMsg_Log("INT(%d) ",bblval.gval.ival);
 						return INT;
 				}
 {ROW}				{
 						adjust();
-						bblval.gval.ival=atoi(bbtext + 1);
-						RowOperations_ErrorMsg_Log("ROW(%d) ", bblval.gval.ival);
+						//bblval.gval.ival=atoi(bbtext + 1);
+						//RowOperations_ErrorMsg_Log("ROW(%d) ", bblval.gval.ival);
 						return ROW;
 				}
-{LEFT_ARROW}			{adjust(); RowOperations_ErrorMsg_Log("<- ");  return LEFT_ARROW;}	
-{LEFT_RIGHT_ARROW}		{adjust(); RowOperations_ErrorMsg_Log("<-> ");  return LEFT_RIGHT_ARROW;}	
+{LEFT_ARROW}			{adjust(); /* RowOperations_ErrorMsg_Log("<- "); */  return LEFT_ARROW;}	
+{LEFT_RIGHT_ARROW}		{adjust(); /* RowOperations_ErrorMsg_Log("<-> "); */  return LEFT_RIGHT_ARROW;}	
+.                               {adjust(); /* RowOperations_ErrorMsg_Log("ERROR ");*/   return ERROR;} 
