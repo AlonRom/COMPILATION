@@ -88,8 +88,16 @@ void Logging(int debug,char* string,int row, int coloum,int token)
 	}
 	else
 	{
-		SolutionSet_ErrorMsg_Log("ERROR: MESSAGE %s, ROW %d, COLOUM %d, TOKEN %d \n",string,row,coloum,token);
+		if (debug == 2)
+		{
+			SolutionSet_ErrorMsg_Log("INFO: MESSAGE %s \n",string);
+		}
+		else
+		{
+			SolutionSet_ErrorMsg_Log("ERROR: MESSAGE %s, ROW %d, COLOUM %d, TOKEN %d \n",string,row,coloum,token);
+		}
 	}
+
 }
 
 /*****************/
@@ -369,7 +377,7 @@ void AfterRparen()
 		}
 		else
 		{
-			Logging(1, " === NO ERRORS IN FILE === ", 0, 0, 0);
+			Logging(2, " === NO ERRORS IN FILE === ", 0, 0, 0);
 		}
 		break;
 	}
