@@ -57,7 +57,7 @@ int commaCounter = 0;
 int commaDefCounter = 0;
 int coloum = 0;
 //-- to enable debug set to 1
-int debugEnabled = 1;
+int debugEnabled = 0;
 
 
 /***************************/
