@@ -90,11 +90,11 @@ void Logging(int debug,char* string,int row, int coloum,int token)
 	{
 		if (debug == 2)
 		{
-			SolutionSet_ErrorMsg_Log("INFO: MESSAGE %s \n",string);
+			SolutionSet_ErrorMsg_Log("%s\n",string);
 		}
 		else
 		{
-			SolutionSet_ErrorMsg_Log("ERROR: MESSAGE %s, ROW %d, COLOUM %d, TOKEN %d \n",string,row,coloum,token);
+			SolutionSet_ErrorMsg_Log("ERROR(%d)\n",coloum);
 		}
 	}
 
@@ -164,7 +164,7 @@ void SolutionOperationList()
 	currentRow++;
 	switch (tok)
 	{
-		// rowOperationList ---> rowOperation rowOperationList
+
 	case(LBRACE):
 		coloum++;
 		EatS(LBRACE);
@@ -180,7 +180,7 @@ void SolutionOperationList()
 	default:
 		if (hasError)
 			//Logging("Error(%d)\n\n", currentRow);
-			Logging(0,"Error", currentRow, coloum,tok);
+			Logging(0,"ERROR", currentRow, coloum,tok);
 		break;
 	}
 }
@@ -197,7 +197,7 @@ void Lbrace()
 
 	default:
 		//Logging("Error(%d)\n\n", currentRow);
-		Logging(0,"Error", currentRow, coloum,tok);
+		Logging(0,"ERROR", currentRow, coloum,tok);
 		break;
 		//exit(0);
 	}
@@ -228,7 +228,7 @@ void AfterLparen()
 		AfterMinus();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -244,7 +244,7 @@ void OperationS()
 		StartVector();
 		break;
 	default:
-		SolutionSet_ErrorMsg_Log("Error(%d) (%d)\n\n", currentRow, coloum);
+		SolutionSet_ErrorMsg_Log("ERROR(%d) (%d)\n\n", currentRow, coloum);
 		break;
 	}
 }
@@ -265,7 +265,7 @@ void StartVector()
 		AfterRparen();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -290,7 +290,7 @@ void AfterInt()
 		AfterDivide();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -310,7 +310,7 @@ void AfterDivide()
 		AfterMinus();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -325,7 +325,7 @@ void AfterMinus()
 		AfterInt();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -347,7 +347,7 @@ void AfterRparen()
 		//-- If amount commas different then definite amount commase throw exception and it's not the start of a new vector
 		if (commaCounter != commaDefCounter && tok != 0)
 		{
-			Logging(0,"Error --> Vectors dimensions are not matching \n \n", currentRow, coloum,tok);
+			Logging(0,"ERROR \n \n", currentRow, coloum,tok);
 			getchar();
 			exit(0);
 		}
@@ -373,11 +373,11 @@ void AfterRparen()
 	default:
 		if (tok != 0)
 		{
-			Logging(0, "Error", currentRow, coloum, tok);
+			Logging(0, "ERROR", currentRow, coloum, tok);
 		}
 		else
 		{
-			Logging(2, " === NO ERRORS IN FILE === ", 0, 0, 0);
+			Logging(2, "OK", 0, 0, 0);
 		}
 		break;
 	}
@@ -404,7 +404,7 @@ void AfterRbrace()
 		AfterRparen();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -419,7 +419,7 @@ void AfterPlus()
 		AfterSpan();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -446,7 +446,7 @@ void AfterComma()
 		AfterMinus();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -461,7 +461,7 @@ void AfterSpan()
 		AfterLparen();
 		break;
 	default:
-		Logging(0, "Error", currentRow, coloum, tok);
+		Logging(0, "ERROR", currentRow, coloum, tok);
 		break;
 	}
 }
@@ -477,7 +477,7 @@ void Eat(int expectedToken)
 	}
 	else
 	{
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 	}
 }
@@ -496,7 +496,7 @@ void EatS(int expectedToken)
 	}
 	else
 	{
-		Logging(0,"Error",currentRow,coloum,tok);
+		Logging(0,"ERROR",currentRow,coloum,tok);
 		hasError = 1;
 		//exit(0);
 	}
@@ -523,7 +523,7 @@ void RowOperationList()
 		default:
 			if (!hasError)
 			{
-				RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+				RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 				hasError = 1;
 			}
 			break;
@@ -547,7 +547,7 @@ void RowOperation()
 			RowOperation();
 			break;
 		case(ERROR):
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 			break;
 		case(EOF):
@@ -555,7 +555,7 @@ void RowOperation()
 		default:
 			if (!hasError)
 			{
-				RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+				RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 				hasError = 1;
 			}
 			break;
@@ -580,11 +580,11 @@ void Operation()
 			break;
 		case(LINE_TERMINATOR):
 			Eat(LINE_TERMINATOR);
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 			break;
 		case(ERROR):
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 			break;
 		case(EOF):
@@ -592,7 +592,7 @@ void Operation()
 		default:
 			if (!hasError)
 			{
-				RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+				RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 				hasError = 1;
 			}
 			break;
@@ -614,11 +614,11 @@ void MulRow()
 			break;
 		case(LINE_TERMINATOR):
 			Eat(LINE_TERMINATOR);
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 			break;
 		case(ERROR):
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 			break;
 		case(EOF):
@@ -626,7 +626,7 @@ void MulRow()
 		default:
 			if (!hasError)
 			{
-				RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+				RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 				hasError = 1;
 			}
 			break;
@@ -659,7 +659,7 @@ void MathOperation()
 		default:
 			if (!hasError)
 			{
-				RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+				RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 				hasError = 1;
 			}
 			break;
@@ -702,11 +702,11 @@ void AddRow()
 		break;
 	case(LINE_TERMINATOR):
 		Eat(LINE_TERMINATOR);
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 		break;
 	case(ERROR):
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 		break;
 	case(EOF):
@@ -714,7 +714,7 @@ void AddRow()
 	default:
 		if (!hasError)
 		{
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 		}
 		break;
@@ -738,11 +738,11 @@ void SubtractRow()
 		break;
 	case(LINE_TERMINATOR):
 		Eat(LINE_TERMINATOR);
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 		break;
 	case(ERROR):
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 		break;
 	case(EOF):
@@ -750,7 +750,7 @@ void SubtractRow()
 	default:
 		if (!hasError)
 		{
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 		}
 		break;
@@ -780,7 +780,7 @@ void AfterMul()
 			RowOperation();
 			break;
 		case(ERROR):
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 			break;
 		case(EOF):
@@ -788,7 +788,7 @@ void AfterMul()
 		default:
 			if (!hasError)
 			{
-				RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+				RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 				hasError = 1;
 			}
 			break;
@@ -815,11 +815,11 @@ void AfterSubtract()
 		break;
 	case(LINE_TERMINATOR):
 		Eat(LINE_TERMINATOR);
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 		break;
 	case(ERROR):
-		RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+		RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 		hasError = 1;
 		break;
 	case(EOF):
@@ -827,7 +827,7 @@ void AfterSubtract()
 	default:
 		if (!hasError)
 		{
-			RowOperations_ErrorMsg_Log("Error(%d)\n\n", currentRow);
+			RowOperations_ErrorMsg_Log("ERROR(%d)\n\n", currentRow);
 			hasError = 1;
 		}
 		break;

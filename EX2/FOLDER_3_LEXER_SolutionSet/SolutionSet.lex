@@ -83,12 +83,12 @@ COMMA			","
 %%
 {WHITE_SPACE}		        {adjust(); continue;}
 {LINE_TERMINATOR}	        {adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
-{LPAREN}			{adjust(); SolutionSet_ErrorMsg_Log("(");  return LPAREN;}
-{RPAREN}			{adjust(); SolutionSet_ErrorMsg_Log(")");  return RPAREN;}
-{LBRACE}			{adjust(); SolutionSet_ErrorMsg_Log("{");  return LBRACE;}
-{RBRACE}			{adjust(); SolutionSet_ErrorMsg_Log("}");  return RBRACE;}
-{SPAN}			        {adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
-{COMMA}			        {adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+{LPAREN}			{adjust(); /*SolutionSet_ErrorMsg_Log("(");*/  return LPAREN;}
+{RPAREN}			{adjust(); /*SolutionSet_ErrorMsg_Log(")");*/  return RPAREN;}
+{LBRACE}			{adjust(); /*SolutionSet_ErrorMsg_Log("{");*/  return LBRACE;}
+{RBRACE}			{adjust(); /*SolutionSet_ErrorMsg_Log("}");*/  return RBRACE;}
+{SPAN}			        {adjust(); /*SolutionSet_ErrorMsg_Log("SP");*/  return SPAN;}
+{COMMA}			        {adjust(); /*SolutionSet_ErrorMsg_Log(",");*/  return COMMA;}
 {PLUS}                          {adjust(); /* RowOperations_ErrorMsg_Log("+ ");  */ return PLUS;}
 {MINUS}                         {adjust(); /* RowOperations_ErrorMsg_Log("- "); */  return MINUS;}
 {DIVIDE}                        {adjust(); /*  RowOperations_ErrorMsg_Log("/ "); */  return DIVIDE;}

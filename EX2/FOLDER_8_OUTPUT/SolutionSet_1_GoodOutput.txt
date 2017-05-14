@@ -1,1 +1,1 @@
-{(,,)}SP({(,,),(,,)})INFO: MESSAGE  === NO ERRORS IN FILE ===  
+OK
