@@ -301,12 +301,12 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 8
-#define YY_END_OF_BUFFER 9
-static yyconst short int yy_accept[14] =
+#define YY_NUM_RULES 13
+#define YY_END_OF_BUFFER 14
+static yyconst short int yy_accept[20] =
     {   0,
-        0,    0,    9,    8,    1,    2,    3,    4,    7,    5,
-        6,    7,    0
+        0,    0,   14,   13,    1,    2,    3,    4,    9,    8,
+       10,   11,   12,   13,    5,    6,   12,    7,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -315,16 +315,16 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    4,    1,    1,    1,    1,    1,    1,    1,    5,
-        6,    1,    1,    1,    1,    1,    1,    7,    7,    7,
-        7,    7,    7,    7,    7,    7,    7,    1,    1,    1,
+        6,    1,    7,    8,    9,    1,   10,   11,   11,   11,
+       11,   11,   11,   11,   11,   11,   11,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,   12,
+        1,    1,   13,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    8,    1,    9,    1,    1,    1,    1,    1,
+        1,    1,   14,    1,   15,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -341,35 +341,38 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[10] =
+static yyconst int yy_meta[16] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1
     } ;
 
-static yyconst short int yy_base[14] =
+static yyconst short int yy_base[20] =
     {   0,
-        0,    0,   12,   13,   13,   13,   13,   13,    4,   13,
-       13,    3,   13
+        0,    0,   19,   20,   20,   20,   20,   20,   20,   20,
+       20,   20,    7,    5,   20,   20,    5,   20,   20
     } ;
 
-static yyconst short int yy_def[14] =
+static yyconst short int yy_def[20] =
     {   0,
-       13,    1,   13,   13,   13,   13,   13,   13,   13,   13,
-       13,   13,    0
+       19,    1,   19,   19,   19,   19,   19,   19,   19,   19,
+       19,   19,   19,   19,   19,   19,   19,   19,    0
     } ;
 
-static yyconst short int yy_nxt[23] =
+static yyconst short int yy_nxt[36] =
     {   0,
         4,    5,    6,    5,    7,    8,    9,   10,   11,   12,
-       12,   13,    3,   13,   13,   13,   13,   13,   13,   13,
-       13,   13
+       13,    4,   14,   15,   16,   17,   18,   17,   19,    3,
+       19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
+       19,   19,   19,   19,   19
     } ;
 
-static yyconst short int yy_chk[23] =
+static yyconst short int yy_chk[36] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,   12,
-        9,    3,   13,   13,   13,   13,   13,   13,   13,   13,
-       13,   13
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,   17,   14,   13,    3,   19,
+       19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
+       19,   19,   19,   19,   19
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -386,42 +389,66 @@ char *yytext;
 #line 1 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 #define INITIAL 0
 #line 2 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+
 /*************************/
+
 /* GENERAL INCLUDE FILES */
+
 /*************************/
+
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
 
+
 /*************************/
 /* PROJECT INCLUDE FILES */
 /*************************/
+
 #include "FILE_01_util.h"
 #include "FILE_14_SolutionSet_ErrorMsg.h"
 #include "FILE_17_SolutionSet_AST.h"
 #include "FILE_18_SolutionSet_Parser.h"
 
+
 /**************************/
+
 /* CONTROL ERROR MESSAGES */
+
 /**************************/
+
 static int charPos=1;
 
 /******************/
+
 /* PROVIDE ccWRAP */
+
 /******************/
+
 int ccwrap(void)
+
 {
+
 	charPos=1;
+
 	return 1;
+
 }
 
 /**************************/
+
 /* CONTROL ERROR MESSAGES */
+
 /**************************/
+
 static void adjust(void)
+
 {
+
 	SolutionSet_ErrorMsg_tokPos = charPos;
+
 	charPos += ccleng;
+
 }
 
 /*****************/
@@ -445,7 +472,7 @@ static void adjust(void)
 /*********/
 /* RULES */
 /*********/
-#line 449 "./FOLDER_04_LEXER_PARSER_SolutionSet/FILE_17_SolutionSet_Lexer.c"
+#line 476 "./FOLDER_04_LEXER_PARSER_SolutionSet/FILE_17_SolutionSet_Lexer.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -596,9 +623,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 81 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+#line 136 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 
-#line 602 "./FOLDER_04_LEXER_PARSER_SolutionSet/FILE_17_SolutionSet_Lexer.c"
+
+#line 630 "./FOLDER_04_LEXER_PARSER_SolutionSet/FILE_17_SolutionSet_Lexer.c"
 
 	if ( yy_init )
 		{
@@ -649,13 +677,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 14 )
+				if ( yy_current_state >= 20 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 13 );
+		while ( yy_base[yy_current_state] != 20 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -683,50 +711,77 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 82 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+#line 138 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 {adjust(); continue;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 83 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+#line 140 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 84 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+#line 142 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Log("(");  return LPAREN;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 85 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log(")");  return RPAREN;}
+#line 144 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log(")"); return RPAREN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 86 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+#line 146 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 {adjust(); SolutionSet_ErrorMsg_Log("{");  return LBRACE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 87 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("}");  return RBRACE;}
+#line 148 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log("}"); return RBRACE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 88 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{
-						adjust();
-						cclval.gval.ival=atoi(cctext);
-						SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival);
-						return INT;
-					}
+#line 150 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 94 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+#line 152 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 154 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log("+ "); return PLUS;}
+	YY_BREAK
+case 10:
+YY_RULE_SETUP
+#line 156 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log("- "); return MINUS;}
+	YY_BREAK
+case 11:
+YY_RULE_SETUP
+#line 158 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{adjust(); SolutionSet_ErrorMsg_Log("/ "); return DIVIDE;}
+	YY_BREAK
+case 12:
+YY_RULE_SETUP
+#line 160 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
+{
+
+                                                adjust();
+                                                cclval.gval.ival=atoi(cctext);
+                                                SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival);
+                                                return INT;
+
+                                }
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 168 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
 ECHO;
 	YY_BREAK
-#line 730 "./FOLDER_04_LEXER_PARSER_SolutionSet/FILE_17_SolutionSet_Lexer.c"
+#line 785 "./FOLDER_04_LEXER_PARSER_SolutionSet/FILE_17_SolutionSet_Lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1016,7 +1071,7 @@ static yy_state_type yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 14 )
+			if ( yy_current_state >= 20 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1051,11 +1106,11 @@ yy_state_type yy_current_state;
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 14 )
+		if ( yy_current_state >= 20 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 13);
+	yy_is_jam = (yy_current_state == 19);
 
 	return yy_is_jam ? 0 : yy_current_state;
 	}
@@ -1602,5 +1657,4 @@ int main()
 	return 0;
 	}
 #endif
-#line 94 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-
+#line 168 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"

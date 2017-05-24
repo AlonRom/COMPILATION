@@ -30,6 +30,7 @@ int Parse_SolutionSet(string SolutionSet_Filename)
 	/*******************************/
 	if (ccparse() == 0)
 	{
+		SolutionSet_ErrorMsg_Log("OK\n");
 		/******************/
 		/* parsing worked */
 		/******************/
@@ -37,6 +38,7 @@ int Parse_SolutionSet(string SolutionSet_Filename)
 	}
 	else
 	{
+		SolutionSet_ErrorMsg_Log("FAIL\n");
 		/******************/
 		/* parsing failed */
 		/******************/
