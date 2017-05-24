@@ -137,31 +137,31 @@ COMMA			","
 
 {WHITE_SPACE}		        {adjust(); continue;}
 
-{LINE_TERMINATOR}	        {adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
+{LINE_TERMINATOR}	        {adjust(); /* SolutionSet_ErrorMsg_Newline(); */ continue;}
 
-{LPAREN}			{adjust(); SolutionSet_ErrorMsg_Log("(");  return LPAREN;}
+{LPAREN}			{adjust(); /* SolutionSet_ErrorMsg_Log("("); */ return LPAREN;}
 
-{RPAREN}			{adjust(); SolutionSet_ErrorMsg_Log(")"); return RPAREN;}
+{RPAREN}			{adjust(); /* SolutionSet_ErrorMsg_Log(")"); */ return RPAREN;}
 
-{LBRACE}			{adjust(); SolutionSet_ErrorMsg_Log("{");  return LBRACE;}
+{LBRACE}			{adjust(); /* SolutionSet_ErrorMsg_Log("{"); */ return LBRACE;}
 
-{RBRACE}			{adjust(); SolutionSet_ErrorMsg_Log("}"); return RBRACE;}
+{RBRACE}			{adjust(); /* SolutionSet_ErrorMsg_Log("}"); */ return RBRACE;}
 
-{SPAN}			        {adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
+{SPAN}			        {adjust(); /* SolutionSet_ErrorMsg_Log("SP"); */ return SPAN;}
 
-{COMMA}			        {adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+{COMMA}			        {adjust(); /* SolutionSet_ErrorMsg_Log(","); */ return COMMA;}
 
-{PLUS}                          {adjust(); SolutionSet_ErrorMsg_Log("+ "); return PLUS;}
+{PLUS}                          {adjust(); /* SolutionSet_ErrorMsg_Log("+ "); */ return PLUS;}
 
-{MINUS}                         {adjust(); SolutionSet_ErrorMsg_Log("- "); return MINUS;}
+{MINUS}                         {adjust(); /* SolutionSet_ErrorMsg_Log("- "); */ return MINUS;}
 
-{DIVIDE}                        {adjust(); SolutionSet_ErrorMsg_Log("/ "); return DIVIDE;}
+{DIVIDE}                        {adjust(); /* SolutionSet_ErrorMsg_Log("/ "); */ return DIVIDE;}
 
 {INT}                           {
 
                                                 adjust();
-                                                cclval.gval.ival=atoi(cctext);
-                                                SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival);
+                                               /* cclval.gval.ival=atoi(cctext); */
+                                               /* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
                                                 return INT;
 
                                 }

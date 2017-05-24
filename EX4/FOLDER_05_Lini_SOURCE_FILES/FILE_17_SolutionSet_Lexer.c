@@ -717,52 +717,52 @@ YY_RULE_SETUP
 case 2:
 YY_RULE_SETUP
 #line 140 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Newline(); continue;}
+{adjust(); /* SolutionSet_ErrorMsg_Newline(); */ continue;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 142 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("(");  return LPAREN;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("("); */ return LPAREN;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 144 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log(")"); return RPAREN;}
+{adjust(); /* SolutionSet_ErrorMsg_Log(")"); */ return RPAREN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 146 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("{");  return LBRACE;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("{"); */ return LBRACE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 148 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("}"); return RBRACE;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("}"); */ return RBRACE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 150 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("SP");  return SPAN;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("SP"); */ return SPAN;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 152 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log(",");  return COMMA;}
+{adjust(); /* SolutionSet_ErrorMsg_Log(","); */ return COMMA;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 154 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("+ "); return PLUS;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("+ "); */ return PLUS;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 156 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("- "); return MINUS;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("- "); */ return MINUS;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 158 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.lex"
-{adjust(); SolutionSet_ErrorMsg_Log("/ "); return DIVIDE;}
+{adjust(); /* SolutionSet_ErrorMsg_Log("/ "); */ return DIVIDE;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
@@ -770,8 +770,8 @@ YY_RULE_SETUP
 {
 
                                                 adjust();
-                                                cclval.gval.ival=atoi(cctext);
-                                                SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival);
+                                               /* cclval.gval.ival=atoi(cctext); */
+                                               /* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
                                                 return INT;
 
                                 }

@@ -1,1 +1,1 @@
-{(INT(1) ,INT(1) )}+ SP({(- INT(2) / - INT(2) ,INT(2) ),(INT(3) ,INT(3) )})OK
+OK
