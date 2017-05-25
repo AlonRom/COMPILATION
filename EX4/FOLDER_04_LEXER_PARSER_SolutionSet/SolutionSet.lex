@@ -111,7 +111,7 @@ RBRACE	"}"
 
 PLUS	"+"
 
-DIVIDE	"/"
+DIVIDE	"/" | "\\"
 
 MINUS "-"
 
@@ -122,6 +122,8 @@ MINUS "-"
 /*******/
 
 INT				[0-9]+
+
+DENOMINATOR			[1-9]+
 
 SPAN			"SP"
 
@@ -163,5 +165,14 @@ COMMA			","
                                                /* cclval.gval.ival=atoi(cctext); */
                                                /* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
                                                 return INT;
+
+                                }
+				
+{DENOMINATOR}                   {
+
+                                                adjust();
+                                               /* cclval.gval.ival=atoi(cctext); */
+                                               /* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
+                                                return DENOMINATOR;
 
                                 }
