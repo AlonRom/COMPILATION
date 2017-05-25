@@ -92,6 +92,9 @@ program:		solutionSet		{printf("program --> solutionSet \n");}
 solutionSet: 		LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN	{printf("solutionSet --> LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");}
 			| SPAN LPAREN LBRACE RowVecList RBRACE RPAREN		{printf("solutionSet --> SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");}
 			| LBRACE  RowVec RBRACE		{printf("solutionSet --> LBRACE  RowVec RBRACE \n");}
+			
+			
+			
 
 RowVecListSize2:	RowVec COMMA RowVecListSize2 	{printf("RowVecListSize2 --> RowVec COMMA RowVecListSize2 \n");}
 			| RowVec		{printf("solutionSet --> RowVec \n");}
