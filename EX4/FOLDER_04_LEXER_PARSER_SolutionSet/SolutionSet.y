@@ -89,12 +89,15 @@ int SolutionSet_AST_ROOT;
 
 program:		solutionSet		{printf("program --> solutionSet \n");}
 
-solutionSet: 		LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN	{printf("solutionSet --> LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");}
-			| SPAN LPAREN LBRACE RowVecList RBRACE RPAREN		{printf("solutionSet --> SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");}
-			| LBRACE  RowVec RBRACE		{printf("solutionSet --> LBRACE  RowVec RBRACE \n");}
-			
-			
-			
+solutionSet: 		LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN	{printf("solutionSet --> LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN \n");}
+			| SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN		{printf("solutionSet --> SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN \n");}
+			| LBRACE RowVecSize2 RBRACE		{printf("solutionSet --> LBRACE  RowVecSize2 RBRACE \n");}
+			| LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN	{printf("solutionSet --> LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN \n");}
+			| SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN		{printf("solutionSet --> SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN \n");}
+			| LBRACE RowVecSize3 RBRACE		{printf("solutionSet --> LBRACE  RowVecSize3 RBRACE \n");}
+			| LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN	{printf("solutionSet --> LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN \n");}
+			| SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN		{printf("solutionSet --> SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN \n");}
+			| LBRACE RowVecSize4 RBRACE		{printf("solutionSet --> LBRACE  RowVecSize4 RBRACE \n");}
 
 RowVecListSize2:	RowVec COMMA RowVecListSize2 	{printf("RowVecListSize2 --> RowVec COMMA RowVecListSize2 \n");}
 			| RowVec		{printf("solutionSet --> RowVec \n");}
