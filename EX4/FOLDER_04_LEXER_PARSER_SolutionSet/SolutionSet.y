@@ -66,6 +66,7 @@ int SolutionSet_AST_ROOT;
 %token <gval> DIVIDE
 %token <gval> SPAN
 %token <gval> COMMA
+%token <gval> DENOMINATOR
 
 
 /*****************/
@@ -100,12 +101,10 @@ RowVec:  		LPAREN Number COMMA Number RPAREN			{printf("RowVec --> LPAREN Number
 			| LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN	{printf("RowVec --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");}
 
 
-Number: 		INT DIVIDE INT		{printf("Number --> INT DEVIDE INT \n");}
+Number: 		INT DIVIDE DENOMINATOR		{printf("Number --> INT DEVIDE DENOMINATOR \n");}
 			| INT 			{printf("Number --> INT \n");}
-			| Op INT DIVIDE INT	{printf("Number --> OP INT DEVIDE INT \n");}
+			| Op INT DIVIDE DENOMINATOR	{printf("Number --> OP INT DEVIDE DENOMINATOR \n");}
 			| Op INT		{printf("Number --> OP INT \n");}
-			| Op INT DIVIDE Op INT	{printf("Number --> OP INT DEVIDE OP INT \n");}
-			| INT DIVIDE Op INT	{printf("Number --> INT DIVIDE OP INT \n");}
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
 			| MINUS		{printf("Op --> MINUS \n");}
