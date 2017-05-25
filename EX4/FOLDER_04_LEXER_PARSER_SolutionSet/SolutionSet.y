@@ -74,8 +74,12 @@ int SolutionSet_AST_ROOT;
 /*****************/
 %type <gval> program
 %type <gval> solutionSet
-%type <gval> RowVecList
-%type <gval> RowVec
+%type <gval> RowVecListSize2
+%type <gval> RowVecListSize3
+%type <gval> RowVecListSize4
+%type <gval> RowVecSize2
+%type <gval> RowVecSize3
+%type <gval> RowVecSize4
 %type <gval> Number
 %type <gval> Op
 
