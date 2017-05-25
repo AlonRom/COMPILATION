@@ -93,13 +93,20 @@ solutionSet: 		LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAR
 			| SPAN LPAREN LBRACE RowVecList RBRACE RPAREN		{printf("solutionSet --> SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");}
 			| LBRACE  RowVec RBRACE		{printf("solutionSet --> LBRACE  RowVec RBRACE \n");}
 
-RowVecList:		RowVec COMMA RowVecList 	{printf("RowVecList --> RowVec COMMA RowVecList \n");}
+RowVecListSize2:	RowVec COMMA RowVecListSize2 	{printf("RowVecListSize2 --> RowVec COMMA RowVecListSize2 \n");}
+			| RowVec		{printf("solutionSet --> RowVec \n");}
+			
+RowVecListSize3:	RowVec COMMA RowVecListSize3 	{printf("RowVecListSize3 --> RowVec COMMA RowVecListSize3 \n");}
+			| RowVec		{printf("solutionSet --> RowVec \n");}
+			
+RowVecListSize4:	RowVec COMMA RowVecListSize4 	{printf("RowVecListSize4 --> RowVec COMMA RowVecListSize4 \n");}
 			| RowVec		{printf("solutionSet --> RowVec \n");}
 
-RowVec:  		LPAREN Number COMMA Number RPAREN			{printf("RowVec --> LPAREN Number COMMA Number RPAREN \n");}
-			| LPAREN Number COMMA Number COMMA Number RPAREN		{printf("RowVec --> LPAREN Number COMMA Number COMMA Number RPAREN \n");}
-			| LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN	{printf("RowVec --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");}
+RowVecSize2:  		LPAREN Number COMMA Number RPAREN		{printf("RowVecSize2 --> LPAREN Number COMMA Number RPAREN \n");}
 
+RowVecSize3:  		LPAREN Number COMMA Number COMMA Number RPAREN		{printf("RowVecSize3 --> LPAREN Number COMMA Number COMMA Number RPAREN \n");}
+
+RowVecSize4:  	        LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN	{printf("RowVecSize4 --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");}
 
 Number: 		INT DIVIDE DENOMINATOR		{printf("Number --> INT DEVIDE DENOMINATOR \n");}
 			| INT 			{printf("Number --> INT \n");}
