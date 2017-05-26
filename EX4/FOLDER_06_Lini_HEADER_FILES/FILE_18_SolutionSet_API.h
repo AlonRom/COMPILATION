@@ -18,6 +18,6 @@ extern int SolutionSet_AST_ROOT;
 /*************/
 /* FUNCTIONS */
 /*************/
-int Parse_SolutionSet(string SolutionSet_Filename, string SolutionSet_Filename);
+int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename);
 
 #endif
