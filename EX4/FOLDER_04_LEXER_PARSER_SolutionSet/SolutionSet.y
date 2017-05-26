@@ -102,13 +102,13 @@ solutionSet: 		LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 R
 			| LBRACE RowVecSize4 RBRACE		{printf("solutionSet --> LBRACE  RowVecSize4 RBRACE \n");}
 
 RowVecListSize2:	RowVecSize2 COMMA RowVecListSize2 	{printf("RowVecListSize2 --> RowVecSize2 COMMA RowVecListSize2 \n");}
-			| RowVecSize2		{printf("solutionSet --> RowVecSize2 \n");}
+			| RowVecSize2		{printf("RowVecListSize2 --> RowVecSize2 \n");}
 			
 RowVecListSize3:	RowVecSize3 COMMA RowVecListSize3 	{printf("RowVecListSize3 --> RowVecSize3 COMMA RowVecListSize3 \n");}
-			| RowVecSize3		{printf("solutionSet --> RowVecSize3 \n");}
+			| RowVecSize3		{printf("RowVecListSize3 --> RowVecSize3 \n");}
 			
 RowVecListSize4:	RowVecSize4 COMMA RowVecListSize4 	{printf("RowVecListSize4 --> RowVecSize4 COMMA RowVecListSize4 \n");}
-			| RowVecSize4		{printf("solutionSet --> RowVecSize4 \n");}
+			| RowVecSize4		{printf("RowVecListSize4 --> RowVecSize4 \n");}
 
 RowVecSize2:  		LPAREN Number COMMA Number RPAREN		{printf("RowVecSize2 --> LPAREN Number COMMA Number RPAREN \n");}
 
