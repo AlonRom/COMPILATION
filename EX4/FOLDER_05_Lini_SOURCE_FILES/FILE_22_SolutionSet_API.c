@@ -30,7 +30,12 @@ int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 	/*******************************/
 	if (ccparse() == 0)
 	{
-		SolutionSet_ErrorMsg_Log("OK\n");
+		FILE * fp;
+
+		 fp = fopen (Output_Filename, "w+");
+		 fprintf(fp, "%s, "OK\n");
+		 fclose(fp);
+		//SolutionSet_ErrorMsg_Log("OK\n");
 		/******************/
 		/* parsing worked */
 		/******************/
@@ -38,7 +43,10 @@ int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 	}
 	else
 	{
-		SolutionSet_ErrorMsg_Log("FAIL\n");
+		 fp = fopen (Output_Filename, "w+");
+		 fprintf(fp, "%s, "FAIL\n");
+		 fclose(fp);
+		//SolutionSet_ErrorMsg_Log("FAIL\n");
 		/******************/
 		/* parsing failed */
 		/******************/
