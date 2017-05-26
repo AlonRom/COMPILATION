@@ -117,16 +117,16 @@ COMMA			","
 {PLUS}                          {adjust(); /* SolutionSet_ErrorMsg_Log("+ "); */ return PLUS;}
 {MINUS}                         {adjust(); /* SolutionSet_ErrorMsg_Log("- "); */ return MINUS;}
 {DIVIDE}                        {adjust(); /* SolutionSet_ErrorMsg_Log("/ "); */ return DIVIDE;}
-{INT}				{
-						adjust();
-						/* cclval.gval.ival=atoi(cctext); */
-						/* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
-						return INT;
-				}
 {DENOMINATOR}                   {
                                                 adjust();
                                                /* cclval.gval.ival=atoi(cctext); */
                                                /* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
                                                 return DENOMINATOR;
+				}
+{INT}				{
+						adjust();
+						/* cclval.gval.ival=atoi(cctext); */
+						/* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
+						return INT;
 				}
 %%
