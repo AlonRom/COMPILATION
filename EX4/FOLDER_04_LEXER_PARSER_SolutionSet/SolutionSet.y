@@ -68,7 +68,6 @@ int SolutionSet_AST_ROOT;
 %token <gval> COMMA
 %token <gval> DENOMINATOR
 
-
 /*****************/
 /* NON TERMINALS */
 /*****************/
@@ -82,7 +81,6 @@ int SolutionSet_AST_ROOT;
 %type <gval> RowVecSize4
 %type <gval> Number
 %type <gval> Op
-
 
 /**************/
 /* START HERE */
@@ -125,6 +123,5 @@ Number: 		INT DIVIDE DENOMINATOR		{printf("Number --> INT DEVIDE DENOMINATOR \n"
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
 			| MINUS		{printf("Op --> MINUS \n");}
-
 
 %%
