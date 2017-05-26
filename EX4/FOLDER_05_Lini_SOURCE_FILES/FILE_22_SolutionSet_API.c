@@ -24,14 +24,12 @@ int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 	/* Open file for parsing */
 	/*************************/
 	SolutionSet_ErrorMsg_Reset(SolutionSet_Filename);
-	
+	FILE * fp;
 	/*******************************/
 	/* 3 ... 2 ... 1 ... parse !!! */
 	/*******************************/
 	if (ccparse() == 0)
-	{
-		FILE * fp;
-
+	{	
 		 fp = fopen (Output_Filename, "w+");
 		 fprintf(fp, "%s, "OK\n");
 		 fclose(fp);
