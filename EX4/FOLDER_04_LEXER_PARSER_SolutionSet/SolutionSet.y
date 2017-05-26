@@ -126,9 +126,7 @@ Number: 		INT DIVIDE INT		{
 								printf("Number --> INT DEVIDE INT \n");
 							}
 						}
-			| INT 			{printf("Number --> INT \n");}
-			| Op INT 		{printf("Number --> Op INT \n");}
-			| Op INT DIVIDE INT{
+		        | Op INT DIVIDE INT	{
 							if($4.ival == 0)
 							{
 								printf("ERROR !!!\n");
@@ -139,6 +137,9 @@ Number: 		INT DIVIDE INT		{
 								printf("Number --> Op INT DEVIDE INT \n");
 							}
 						}
+			| INT 			{printf("Number --> INT \n");}
+			| Op INT 		{printf("Number --> Op INT \n");}
+		
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
 			| MINUS		{printf("Op --> MINUS \n");}
