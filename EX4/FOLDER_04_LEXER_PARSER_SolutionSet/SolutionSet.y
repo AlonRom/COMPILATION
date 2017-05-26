@@ -66,7 +66,6 @@ int SolutionSet_AST_ROOT;
 %token <gval> DIVIDE
 %token <gval> SPAN
 %token <gval> COMMA
-%token <gval> DENOMINATOR
 
 /*****************/
 /* NON TERMINALS */
@@ -120,7 +119,7 @@ RowVecSize4:  	        LPAREN Number COMMA Number COMMA Number COMMA Number RPAR
 Number: 		NumberOrFraction 			{printf("Number --> NumberOrFraction \n");}
 			| Op NumberOrFraction		{printf("Number --> OP NumberOrFraction \n");}
 
-NumberOrFraction: 	INT DIVIDE DENOMINATOR		{printf("NumberOrFraction --> INT DEVIDE DENOMINATOR \n");}
+NumberOrFraction: 	INT DIVIDE INT		{printf("NumberOrFraction --> INT DEVIDE DENOMINATOR \n");}
 			| INT 			{printf("NumberOrFraction --> INT \n");}
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
