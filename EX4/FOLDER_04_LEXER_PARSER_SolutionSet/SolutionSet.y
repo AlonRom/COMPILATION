@@ -129,7 +129,7 @@ Number: 		INT DIVIDE INT		{
 			| INT 			{printf("Number --> INT \n");}
 			| Op INT 		{printf("Number --> Op INT \n");}
 			| Op INT DIVIDE INT{
-							if($3.ival == 0)
+							if($4.ival == 0)
 							{
 								printf("ERROR !!!\n");
 								exit(0);
