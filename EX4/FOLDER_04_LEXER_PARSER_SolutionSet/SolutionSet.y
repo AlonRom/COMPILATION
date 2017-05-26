@@ -115,10 +115,6 @@ RowVecSize3:  		LPAREN Number COMMA Number COMMA Number RPAREN		{printf("RowVecS
 
 RowVecSize4:  	        LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN	{printf("RowVecSize4 --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");}
 
-Number: 		INT DIVIDE INT 			{printf("Number --> NumberOrFraction \n");}
-			| Op NumberOrFraction		{printf("Number --> OP NumberOrFraction \n");}
-			
-
 Number: 		INT DIVIDE INT		{
 							if($3.ival == 0)
 							{
