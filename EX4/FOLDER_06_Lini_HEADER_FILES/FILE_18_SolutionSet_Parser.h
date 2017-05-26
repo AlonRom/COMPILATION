@@ -18,6 +18,6 @@ typedef union
 #define	MINUS	265
 #define	DIVIDE	266
 #define	SPAN	267
-
+#define DENOMINATOR 268
 
 extern YYSTYPE cclval;
