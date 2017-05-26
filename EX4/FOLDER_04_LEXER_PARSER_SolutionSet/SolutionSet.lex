@@ -94,8 +94,6 @@ MINUS "-"
 
 INT				[0-9]+
 
-DENOMINATOR			[1-9]+
-
 SPAN			"SP"
 
 COMMA			","
@@ -117,12 +115,6 @@ COMMA			","
 {PLUS}                          {adjust(); /* SolutionSet_ErrorMsg_Log("+ "); */ return PLUS;}
 {MINUS}                         {adjust(); /* SolutionSet_ErrorMsg_Log("- "); */ return MINUS;}
 {DIVIDE}                        {adjust(); /* SolutionSet_ErrorMsg_Log("/ "); */ return DIVIDE;}
-{DENOMINATOR}                   {
-                                                adjust();
-                                               /* cclval.gval.ival=atoi(cctext); */
-                                               /* SolutionSet_ErrorMsg_Log("INT(%d) ",cclval.gval.ival); */
-                                                return DENOMINATOR;
-				}
 {INT}				{
 						adjust();
 						/* cclval.gval.ival=atoi(cctext); */
