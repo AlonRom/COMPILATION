@@ -119,7 +119,17 @@ RowVecSize4:  	        LPAREN Number COMMA Number COMMA Number COMMA Number RPAR
 Number: 		NumberOrFraction 			{printf("Number --> NumberOrFraction \n");}
 			| Op NumberOrFraction		{printf("Number --> OP NumberOrFraction \n");}
 
-NumberOrFraction: 	INT DIVIDE INT		{printf("NumberOrFraction --> INT DEVIDE DENOMINATOR \n");}
+NumberOrFraction: 	INT DIVIDE INT		{
+							if($3.ival == 0)
+							{
+								printf("ERROR !!!\n");
+								exit(0);
+							}
+							else
+							{
+								printf("NumberOrFraction --> INT DEVIDE DENOMINATOR \n");
+							}
+						}
 			| INT 			{printf("NumberOrFraction --> INT \n");}
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
