@@ -80,6 +80,7 @@ int SolutionSet_AST_ROOT;
 %type <gval> RowVecSize3
 %type <gval> RowVecSize4
 %type <gval> Number
+%type <gval> NumberOrFraction
 %type <gval> Op
 
 /**************/
@@ -116,10 +117,11 @@ RowVecSize3:  		LPAREN Number COMMA Number COMMA Number RPAREN		{printf("RowVecS
 
 RowVecSize4:  	        LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN	{printf("RowVecSize4 --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");}
 
-Number: 		INT DIVIDE DENOMINATOR		{printf("Number --> INT DEVIDE DENOMINATOR \n");}
+Number: 		NumberOrFraction 			{printf("Number --> NumberOrFraction \n");}
+			| Op NumberOrFraction		{printf("Number --> OP NumberOrFraction \n");}
+
+NumberOrFraction: 		INT DIVIDE DENOMINATOR		{printf("Number --> INT DEVIDE DENOMINATOR \n");}
 			| INT 			{printf("Number --> INT \n");}
-			| Op INT DIVIDE DENOMINATOR	{printf("Number --> OP INT DEVIDE DENOMINATOR \n");}
-			| Op INT		{printf("Number --> OP INT \n");}
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
 			| MINUS		{printf("Op --> MINUS \n");}
