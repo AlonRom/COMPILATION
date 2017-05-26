@@ -79,7 +79,6 @@ int SolutionSet_AST_ROOT;
 %type <gval> RowVecSize3
 %type <gval> RowVecSize4
 %type <gval> Number
-%type <gval> NumberOrFraction
 %type <gval> Op
 
 /**************/
@@ -116,10 +115,11 @@ RowVecSize3:  		LPAREN Number COMMA Number COMMA Number RPAREN		{printf("RowVecS
 
 RowVecSize4:  	        LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN	{printf("RowVecSize4 --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");}
 
-Number: 		NumberOrFraction 			{printf("Number --> NumberOrFraction \n");}
+Number: 		INT DIVIDE INT 			{printf("Number --> NumberOrFraction \n");}
 			| Op NumberOrFraction		{printf("Number --> OP NumberOrFraction \n");}
+			
 
-NumberOrFraction: 	INT DIVIDE INT		{
+Number: 		INT DIVIDE INT		{
 							if($3.ival == 0)
 							{
 								printf("ERROR !!!\n");
@@ -127,10 +127,22 @@ NumberOrFraction: 	INT DIVIDE INT		{
 							}
 							else
 							{
-								printf("NumberOrFraction --> INT DEVIDE DENOMINATOR \n");
+								printf("Number --> INT DEVIDE INT \n");
 							}
 						}
-			| INT 			{printf("NumberOrFraction --> INT \n");}
+			| INT 			{printf("Number --> INT \n");}
+			| Op INT 		{printf("Number --> Op INT \n");}
+			| Op INT DIVIDE INT{
+							if($3.ival == 0)
+							{
+								printf("ERROR !!!\n");
+								exit(0);
+							}
+							else
+							{
+								printf("Number --> Op INT DEVIDE INT \n");
+							}
+						}
 
 Op:			PLUS            {printf("Op --> PLUS \n");}
 			| MINUS		{printf("Op --> MINUS \n");}
