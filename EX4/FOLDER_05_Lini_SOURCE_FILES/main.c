@@ -35,7 +35,7 @@ int main(int argc,char **argv)
 	/**************************/
 	/* [2] Parse Solution Set */
 	/**************************/
-	Parse_SolutionSet(SolutionSet_Filename);
+	Parse_SolutionSet(SolutionSet_Filename, CheckSummary_Filename);
 
 	/**********************************************/
 	/* [2] Scan the AST Solution Set semantically */
