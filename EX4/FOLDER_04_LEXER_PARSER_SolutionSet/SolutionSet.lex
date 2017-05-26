@@ -84,7 +84,7 @@ RBRACE	"}"
 
 PLUS	"+"
 
-DIVIDE	"/" | "\\"
+DIVIDE	"/"
 
 MINUS "-"
 
