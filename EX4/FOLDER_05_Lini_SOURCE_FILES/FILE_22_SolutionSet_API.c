@@ -18,7 +18,7 @@
 /**********************/
 /* Parse Solution Set */
 /**********************/
-int Parse_SolutionSet(string SolutionSet_Filename)
+int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 {
 	/*************************/
 	/* Open file for parsing */
