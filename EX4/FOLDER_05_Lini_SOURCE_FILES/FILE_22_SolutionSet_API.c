@@ -31,7 +31,7 @@ int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 	if (ccparse() == 0)
 	{	
 		 fp = fopen (Output_Filename, "w+");
-		 fprintf(fp, "%s, "OK\n");
+		 fprintf(fp, "%s", "OK\n");
 		 fclose(fp);
 		//SolutionSet_ErrorMsg_Log("OK\n");
 		/******************/
@@ -42,7 +42,7 @@ int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 	else
 	{
 		 fp = fopen (Output_Filename, "w+");
-		 fprintf(fp, "%s, "FAIL\n");
+		 fprintf(fp, "%s", "FAIL\n");
 		 fclose(fp);
 		//SolutionSet_ErrorMsg_Log("FAIL\n");
 		/******************/
