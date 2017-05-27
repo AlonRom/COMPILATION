@@ -14,10 +14,10 @@ typedef union
 #define	LBRACE	261
 #define	RBRACE	262
 #define	COMMA	263
-#define	DIVIDE	264
+#define	PLUS	264
+#define	MINUS	265
+#define	DIVIDE	266
+#define	SPAN	267
 
 
 extern YYSTYPE cclval;
-
-
-

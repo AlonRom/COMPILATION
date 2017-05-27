@@ -28,6 +28,9 @@ int Parse_SolutionSet(string SolutionSet_Filename, string Output_Filename)
 	/*******************************/
 	/* 3 ... 2 ... 1 ... parse !!! */
 	/*******************************/
+	fp = fopen (Output_Filename,"w+");
+	fprintf(fp,"%s", "Fail\n");
+	fclose(fp);
 	if (ccparse() == 0)
 	{	
 		 fp = fopen (Output_Filename, "w+");

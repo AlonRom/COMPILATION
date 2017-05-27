@@ -84,11 +84,11 @@ typedef union
 
 
 
-#define	YYFINAL		47
+#define	YYFINAL		89
 #define	YYFLAG		-32768
 #define	YYNTBASE	13
 
-#define YYTRANSLATE(x) ((unsigned)(x) <= 267 ? yytranslate[x] : 19)
+#define YYTRANSLATE(x) ((unsigned)(x) <= 267 ? yytranslate[x] : 23)
 
 static const char yytranslate[] = {     0,
      2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -122,28 +122,34 @@ static const char yytranslate[] = {     0,
 
 #if YYDEBUG != 0
 static const short yyprhs[] = {     0,
-     0,     2,    13,    20,    24,    28,    30,    36,    44,    54,
-    58,    60,    65,    68,    74,    79,    81
+     0,     2,    13,    20,    24,    35,    42,    46,    57,    64,
+    68,    72,    74,    78,    80,    84,    86,    92,   100,   110,
+   114,   119,   121,   124,   126
 };
 
 static const short yyrhs[] = {    14,
-     0,     6,    16,     7,    18,    12,     4,     6,    15,     7,
+     0,     6,    18,     7,    22,    12,     4,     6,    15,     7,
      5,     0,    12,     4,     6,    15,     7,     5,     0,     6,
-    16,     7,     0,    16,     8,    15,     0,    16,     0,     4,
-    17,     8,    17,     5,     0,     4,    17,     8,    17,     8,
-    17,     5,     0,     4,    17,     8,    17,     8,    17,     8,
-    17,     5,     0,     3,    11,     3,     0,     3,     0,    18,
-     3,    11,     3,     0,    18,     3,     0,    18,     3,    11,
-    18,     3,     0,     3,    11,    18,     3,     0,     9,     0,
-    10,     0
+    18,     7,     0,     6,    19,     7,    22,    12,     4,     6,
+    16,     7,     5,     0,    12,     4,     6,    16,     7,     5,
+     0,     6,    19,     7,     0,     6,    20,     7,    22,    12,
+     4,     6,    17,     7,     5,     0,    12,     4,     6,    17,
+     7,     5,     0,     6,    20,     7,     0,    18,     8,    15,
+     0,    18,     0,    19,     8,    16,     0,    19,     0,    20,
+     8,    17,     0,    20,     0,     4,    21,     8,    21,     5,
+     0,     4,    21,     8,    21,     8,    21,     5,     0,     4,
+    21,     8,    21,     8,    21,     8,    21,     5,     0,     3,
+    11,     3,     0,    22,     3,    11,     3,     0,     3,     0,
+    22,     3,     0,     9,     0,    10,     0
 };
 
 #endif
 
 #if YYDEBUG != 0
 static const short yyrline[] = { 0,
-    89,    91,    92,    93,    95,    96,    98,    99,   100,   103,
-   104,   105,   106,   107,   108,   110,   111
+    91,    93,    94,    95,    96,    97,    98,    99,   100,   101,
+   103,   104,   106,   107,   109,   110,   112,   114,   116,   118,
+   129,   140,   141,   144,   145
 };
 #endif
 
@@ -152,62 +158,81 @@ static const short yyrline[] = { 0,
 
 static const char * const yytname[] = {   "$","error","$undefined.","INT","LPAREN",
 "RPAREN","LBRACE","RBRACE","COMMA","PLUS","MINUS","DIVIDE","SPAN","program",
-"solutionSet","RowVecList","RowVec","Number","Op", NULL
+"solutionSet","RowVecListSize2","RowVecListSize3","RowVecListSize4","RowVecSize2",
+"RowVecSize3","RowVecSize4","Number","Op", NULL
 };
 #endif
 
 static const short yyr1[] = {     0,
-    13,    14,    14,    14,    15,    15,    16,    16,    16,    17,
-    17,    17,    17,    17,    17,    18,    18
+    13,    14,    14,    14,    14,    14,    14,    14,    14,    14,
+    15,    15,    16,    16,    17,    17,    18,    19,    20,    21,
+    21,    21,    21,    22,    22
 };
 
 static const short yyr2[] = {     0,
-     1,    10,     6,     3,     3,     1,     5,     7,     9,     3,
-     1,     4,     2,     5,     4,     1,     1
+     1,    10,     6,     3,    10,     6,     3,    10,     6,     3,
+     3,     1,     3,     1,     3,     1,     5,     7,     9,     3,
+     4,     1,     2,     1,     1
 };
 
 static const short yydefact[] = {     0,
-     0,     0,     1,     0,     0,     0,    11,    16,    17,     0,
-     0,     4,     0,     0,     0,    13,     0,     0,     6,    10,
-     0,     0,     0,     0,     0,     0,    15,     7,     0,    12,
-     0,     0,     3,     5,     0,    14,     0,     8,     0,     0,
-     0,     0,     9,     2,     0,     0,     0
+     0,     0,     1,     0,     0,     0,     0,     0,    22,    24,
+    25,     0,     0,     4,     7,    10,     0,     0,     0,    23,
+     0,     0,     0,     0,     0,     0,    12,    14,    16,    20,
+     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+     0,    17,     0,    21,     0,     0,     0,     3,     6,     9,
+     0,    11,     0,    13,     0,    15,     0,     0,     0,     0,
+     0,     0,     0,    18,     0,     0,     0,     0,     0,     0,
+     0,     0,     0,     0,     0,     0,     0,     0,    19,     2,
+     5,     8,     0,     0,     0,     0,     0,     0,     0
 };
 
-static const short yydefgoto[] = {    45,
-     3,    18,    19,    10,    11
+static const short yydefgoto[] = {    87,
+     3,    24,    25,    26,    27,    28,    29,    12,    13
 };
 
-static const short yypact[] = {    11,
-    18,    23,-32768,     1,    21,    14,    19,-32768,-32768,    24,
-    26,    -3,    18,     6,     1,    20,    22,    28,    25,-32768,
-    33,     0,    16,    34,    32,    18,-32768,-32768,     1,-32768,
-    36,    35,-32768,-32768,    13,-32768,    18,-32768,     1,    37,
-    38,    40,-32768,-32768,    42,    46,-32768
+static const short yypact[] = {     0,
+    11,    14,-32768,     1,    -2,    12,    20,    17,    18,-32768,
+-32768,    22,    25,    16,    16,    16,    11,    28,     1,    24,
+    21,    26,    27,    30,    33,    34,    35,    36,    37,-32768,
+     8,    39,    43,    44,    45,    48,    49,    50,    52,    53,
+    54,-32768,     1,-32768,    55,    56,    57,-32768,-32768,-32768,
+     1,-32768,     1,-32768,     1,-32768,     9,    52,    53,    54,
+    51,    58,    59,-32768,     1,    61,    62,    63,     1,     1,
+     1,    66,    67,    68,    69,    70,    71,    72,-32768,-32768,
+-32768,-32768,     1,     1,    73,    74,    60,    76,-32768
 };
 
 static const short yypgoto[] = {-32768,
--32768,   -24,    39,   -15,   -11
+-32768,   -38,   -37,   -39,    80,    82,    83,   -19,    -7
 };
 
 
-#define	YYLAST		46
+#define	YYLAST		84
 
 
-static const short yytable[] = {    22,
-    17,    34,    21,     7,    28,     8,     9,    29,    20,     8,
-     9,    31,    40,    35,     8,     9,     1,    38,    30,    13,
-    39,     4,     2,    41,     8,     9,     6,    12,    16,    14,
-    23,    15,    26,    24,    25,    27,    33,    32,    36,     5,
-    37,    46,    43,    42,    44,    47
+static const short yytable[] = {    31,
+    52,    56,    54,     9,    14,     1,    21,    22,    23,    10,
+    11,     2,    42,    64,     4,    43,    65,     8,    15,    66,
+    68,    67,    17,    57,    10,    11,    16,    20,    18,    19,
+    30,    61,    33,    62,    32,    63,    36,    34,    35,    37,
+    38,    44,    39,    40,    41,    72,    45,    46,    47,    76,
+    77,    78,    48,    49,    50,    51,    53,    55,    69,    88,
+    58,    59,    60,    85,    86,    70,    71,    73,    74,    75,
+    79,    80,    81,    82,    42,    89,     0,    64,    83,    84,
+     5,    65,     6,     7
 };
 
-static const short yycheck[] = {    15,
-    12,    26,    14,     3,     5,     9,    10,     8,     3,     9,
-    10,    23,    37,    29,     9,    10,     6,     5,     3,     6,
-     8,     4,    12,    39,     9,    10,     4,     7,     3,    11,
-    11,     8,     8,    12,     7,     3,     5,     4,     3,     1,
-     6,     0,     5,     7,     5,     0
+static const short yycheck[] = {    19,
+    39,    41,    40,     3,     7,     6,    14,    15,    16,     9,
+    10,    12,     5,     5,     4,     8,     8,     4,     7,    58,
+    60,    59,     6,    43,     9,    10,     7,     3,    11,     8,
+     3,    51,    12,    53,    11,    55,     7,    12,    12,     7,
+     7,     3,     8,     8,     8,    65,     4,     4,     4,    69,
+    70,    71,     5,     5,     5,     4,     4,     4,     8,     0,
+     6,     6,     6,    83,    84,     8,     8,     7,     7,     7,
+     5,     5,     5,     5,     5,     0,    -1,     5,     8,     8,
+     1,     8,     1,     1
 };
 /* -*-C-*-  Note some compilers choke on comments on `#line' lines.  */
 #line 3 "bison.simple"
@@ -708,71 +733,123 @@ yyreduce:
   switch (yyn) {
 
 case 1:
-#line 89 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+#line 91 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
 {printf("program --> solutionSet \n");;
     break;}
 case 2:
-#line 91 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("solutionSet --> LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");;
+#line 93 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("solutionSet --> LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN \n");;
     break;}
 case 3:
-#line 92 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("solutionSet --> SPAN LPAREN LBRACE RowVecList RBRACE RPAREN \n");;
+#line 94 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("solutionSet --> SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN \n");;
     break;}
 case 4:
-#line 93 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("solutionSet --> LBRACE  RowVec RBRACE \n");;
+#line 95 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("solutionSet --> LBRACE  RowVecSize2 RBRACE \n");;
     break;}
 case 5:
-#line 95 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("RowVecList --> RowVec COMMA RowVecList \n");;
+#line 96 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("solutionSet --> LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN \n");;
     break;}
 case 6:
-#line 96 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("solutionSet --> RowVec \n");;
+#line 97 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("solutionSet --> SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN \n");;
     break;}
 case 7:
 #line 98 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("RowVec --> LPAREN Number COMMA Number RPAREN \n");;
+{printf("solutionSet --> LBRACE  RowVecSize3 RBRACE \n");;
     break;}
 case 8:
 #line 99 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("RowVec --> LPAREN Number COMMA Number COMMA Number RPAREN \n");;
+{printf("solutionSet --> LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN \n");;
     break;}
 case 9:
 #line 100 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("RowVec --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");;
+{printf("solutionSet --> SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN \n");;
     break;}
 case 10:
-#line 103 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Number --> INT DEVIDE INT \n");;
+#line 101 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("solutionSet --> LBRACE  RowVecSize4 RBRACE \n");;
     break;}
 case 11:
-#line 104 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Number --> INT \n");;
+#line 103 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("RowVecListSize2 --> RowVecSize2 COMMA RowVecListSize2 \n");;
     break;}
 case 12:
-#line 105 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Number --> OP INT DEVIDE INT \n");;
+#line 104 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("RowVecListSize2 --> RowVecSize2 \n");;
     break;}
 case 13:
 #line 106 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Number --> OP INT \n");;
+{printf("RowVecListSize3 --> RowVecSize3 COMMA RowVecListSize3 \n");;
     break;}
 case 14:
 #line 107 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Number --> OP INT DEVIDE OP INT \n");;
+{printf("RowVecListSize3 --> RowVecSize3 \n");;
     break;}
 case 15:
-#line 108 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Number --> INT DIVIDE OP INT \n");;
+#line 109 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("RowVecListSize4 --> RowVecSize4 COMMA RowVecListSize4 \n");;
     break;}
 case 16:
 #line 110 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
-{printf("Op --> PLUS \n");;
+{printf("RowVecListSize4 --> RowVecSize4 \n");;
     break;}
 case 17:
-#line 111 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+#line 112 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("RowVecSize2 --> LPAREN Number COMMA Number RPAREN \n");;
+    break;}
+case 18:
+#line 114 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("RowVecSize3 --> LPAREN Number COMMA Number COMMA Number RPAREN \n");;
+    break;}
+case 19:
+#line 116 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("RowVecSize4 --> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN \n");;
+    break;}
+case 20:
+#line 118 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{
+							if(yyvsp[0].gval.ival == 0)
+							{
+								printf("ERROR !!!\n");
+								exit(0);
+							}
+							else
+							{
+								printf("Number --> INT DEVIDE INT \n");
+							}
+						;
+    break;}
+case 21:
+#line 129 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{
+							if(yyvsp[0].gval.ival == 0)
+							{
+								printf("ERROR !!!\n");
+								exit(0);
+							}
+							else
+							{
+								printf("Number --> Op INT DEVIDE INT \n");
+							}
+						;
+    break;}
+case 22:
+#line 140 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("Number --> INT \n");;
+    break;}
+case 23:
+#line 141 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("Number --> Op INT \n");;
+    break;}
+case 24:
+#line 144 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+{printf("Op --> PLUS \n");;
+    break;}
+case 25:
+#line 145 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
 {printf("Op --> MINUS \n");;
     break;}
 }
@@ -973,5 +1050,5 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 114 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
+#line 147 "./FOLDER_04_LEXER_PARSER_SolutionSet/SolutionSet.y"
 

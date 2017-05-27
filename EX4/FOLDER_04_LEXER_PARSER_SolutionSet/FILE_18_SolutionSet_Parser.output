@@ -1,52 +1,68 @@
 
 Grammar
 rule 1    program -> solutionSet
-rule 2    solutionSet -> LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN
-rule 3    solutionSet -> SPAN LPAREN LBRACE RowVecList RBRACE RPAREN
-rule 4    solutionSet -> LBRACE RowVec RBRACE
-rule 5    RowVecList -> RowVec COMMA RowVecList
-rule 6    RowVecList -> RowVec
-rule 7    RowVec -> LPAREN Number COMMA Number RPAREN
-rule 8    RowVec -> LPAREN Number COMMA Number COMMA Number RPAREN
-rule 9    RowVec -> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN
-rule 10   Number -> INT DIVIDE INT
-rule 11   Number -> INT
-rule 12   Number -> Op INT DIVIDE INT
-rule 13   Number -> Op INT
-rule 14   Number -> Op INT DIVIDE Op INT
-rule 15   Number -> INT DIVIDE Op INT
-rule 16   Op -> PLUS
-rule 17   Op -> MINUS
+rule 2    solutionSet -> LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN
+rule 3    solutionSet -> SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN
+rule 4    solutionSet -> LBRACE RowVecSize2 RBRACE
+rule 5    solutionSet -> LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN
+rule 6    solutionSet -> SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN
+rule 7    solutionSet -> LBRACE RowVecSize3 RBRACE
+rule 8    solutionSet -> LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN
+rule 9    solutionSet -> SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN
+rule 10   solutionSet -> LBRACE RowVecSize4 RBRACE
+rule 11   RowVecListSize2 -> RowVecSize2 COMMA RowVecListSize2
+rule 12   RowVecListSize2 -> RowVecSize2
+rule 13   RowVecListSize3 -> RowVecSize3 COMMA RowVecListSize3
+rule 14   RowVecListSize3 -> RowVecSize3
+rule 15   RowVecListSize4 -> RowVecSize4 COMMA RowVecListSize4
+rule 16   RowVecListSize4 -> RowVecSize4
+rule 17   RowVecSize2 -> LPAREN Number COMMA Number RPAREN
+rule 18   RowVecSize3 -> LPAREN Number COMMA Number COMMA Number RPAREN
+rule 19   RowVecSize4 -> LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN
+rule 20   Number -> INT DIVIDE INT
+rule 21   Number -> Op INT DIVIDE INT
+rule 22   Number -> INT
+rule 23   Number -> Op INT
+rule 24   Op -> PLUS
+rule 25   Op -> MINUS
 
 Terminals, with rules where they appear
 
 $ (-1)
 error (256)
-INT (258) 10 11 12 13 14 15
-LPAREN (259) 2 3 7 8 9
-RPAREN (260) 2 3 7 8 9
-LBRACE (261) 2 3 4
-RBRACE (262) 2 3 4
-COMMA (263) 5 7 8 9
-PLUS (264) 16
-MINUS (265) 17
-DIVIDE (266) 10 12 14 15
-SPAN (267) 2 3
+INT (258) 20 21 22 23
+LPAREN (259) 2 3 5 6 8 9 17 18 19
+RPAREN (260) 2 3 5 6 8 9 17 18 19
+LBRACE (261) 2 3 4 5 6 7 8 9 10
+RBRACE (262) 2 3 4 5 6 7 8 9 10
+COMMA (263) 11 13 15 17 18 19
+PLUS (264) 24
+MINUS (265) 25
+DIVIDE (266) 20 21
+SPAN (267) 2 3 5 6 8 9
 
 Nonterminals, with rules where they appear
 
 program (13)
     on left: 1
 solutionSet (14)
-    on left: 2 3 4, on right: 1
-RowVecList (15)
-    on left: 5 6, on right: 2 3 5
-RowVec (16)
-    on left: 7 8 9, on right: 2 4 5 6
-Number (17)
-    on left: 10 11 12 13 14 15, on right: 7 8 9
-Op (18)
-    on left: 16 17, on right: 2 12 13 14 15
+    on left: 2 3 4 5 6 7 8 9 10, on right: 1
+RowVecListSize2 (15)
+    on left: 11 12, on right: 2 3 11
+RowVecListSize3 (16)
+    on left: 13 14, on right: 5 6 13
+RowVecListSize4 (17)
+    on left: 15 16, on right: 8 9 15
+RowVecSize2 (18)
+    on left: 17, on right: 2 4 11 12
+RowVecSize3 (19)
+    on left: 18, on right: 5 7 13 14
+RowVecSize4 (20)
+    on left: 19, on right: 8 10 15 16
+Number (21)
+    on left: 20 21 22 23, on right: 17 18 19
+Op (22)
+    on left: 24 25, on right: 2 5 8 21 23
 
 
 state 0
@@ -54,27 +70,35 @@ state 0
     LBRACE	shift, and go to state 1
     SPAN	shift, and go to state 2
 
-    program	go to state 45
+    program	go to state 87
     solutionSet	go to state 3
 
 
 
 state 1
 
-    solutionSet  ->  LBRACE . RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN   (rule 2)
-    solutionSet  ->  LBRACE . RowVec RBRACE   (rule 4)
+    solutionSet  ->  LBRACE . RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN   (rule 2)
+    solutionSet  ->  LBRACE . RowVecSize2 RBRACE   (rule 4)
+    solutionSet  ->  LBRACE . RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN   (rule 5)
+    solutionSet  ->  LBRACE . RowVecSize3 RBRACE   (rule 7)
+    solutionSet  ->  LBRACE . RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN   (rule 8)
+    solutionSet  ->  LBRACE . RowVecSize4 RBRACE   (rule 10)
 
     LPAREN	shift, and go to state 4
 
-    RowVec	go to state 5
+    RowVecSize2	go to state 5
+    RowVecSize3	go to state 6
+    RowVecSize4	go to state 7
 
 
 
 state 2
 
-    solutionSet  ->  SPAN . LPAREN LBRACE RowVecList RBRACE RPAREN   (rule 3)
+    solutionSet  ->  SPAN . LPAREN LBRACE RowVecListSize2 RBRACE RPAREN   (rule 3)
+    solutionSet  ->  SPAN . LPAREN LBRACE RowVecListSize3 RBRACE RPAREN   (rule 6)
+    solutionSet  ->  SPAN . LPAREN LBRACE RowVecListSize4 RBRACE RPAREN   (rule 9)
 
-    LPAREN	shift, and go to state 6
+    LPAREN	shift, and go to state 8
 
 
 
@@ -88,117 +112,111 @@ state 3
 
 state 4
 
-    RowVec  ->  LPAREN . Number COMMA Number RPAREN   (rule 7)
-    RowVec  ->  LPAREN . Number COMMA Number COMMA Number RPAREN   (rule 8)
-    RowVec  ->  LPAREN . Number COMMA Number COMMA Number COMMA Number RPAREN   (rule 9)
+    RowVecSize2  ->  LPAREN . Number COMMA Number RPAREN   (rule 17)
+    RowVecSize3  ->  LPAREN . Number COMMA Number COMMA Number RPAREN   (rule 18)
+    RowVecSize4  ->  LPAREN . Number COMMA Number COMMA Number COMMA Number RPAREN   (rule 19)
 
-    INT 	shift, and go to state 7
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
 
-    Number	go to state 10
-    Op  	go to state 11
+    Number	go to state 12
+    Op  	go to state 13
 
 
 
 state 5
 
-    solutionSet  ->  LBRACE RowVec . RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN   (rule 2)
-    solutionSet  ->  LBRACE RowVec . RBRACE   (rule 4)
+    solutionSet  ->  LBRACE RowVecSize2 . RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN   (rule 2)
+    solutionSet  ->  LBRACE RowVecSize2 . RBRACE   (rule 4)
 
-    RBRACE	shift, and go to state 12
+    RBRACE	shift, and go to state 14
 
 
 
 state 6
 
-    solutionSet  ->  SPAN LPAREN . LBRACE RowVecList RBRACE RPAREN   (rule 3)
+    solutionSet  ->  LBRACE RowVecSize3 . RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN   (rule 5)
+    solutionSet  ->  LBRACE RowVecSize3 . RBRACE   (rule 7)
 
-    LBRACE	shift, and go to state 13
+    RBRACE	shift, and go to state 15
 
 
 
 state 7
 
-    Number  ->  INT . DIVIDE INT   (rule 10)
-    Number  ->  INT .   (rule 11)
-    Number  ->  INT . DIVIDE Op INT   (rule 15)
+    solutionSet  ->  LBRACE RowVecSize4 . RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN   (rule 8)
+    solutionSet  ->  LBRACE RowVecSize4 . RBRACE   (rule 10)
 
-    DIVIDE	shift, and go to state 14
-
-    $default	reduce using rule 11 (Number)
+    RBRACE	shift, and go to state 16
 
 
 
 state 8
 
-    Op  ->  PLUS .   (rule 16)
+    solutionSet  ->  SPAN LPAREN . LBRACE RowVecListSize2 RBRACE RPAREN   (rule 3)
+    solutionSet  ->  SPAN LPAREN . LBRACE RowVecListSize3 RBRACE RPAREN   (rule 6)
+    solutionSet  ->  SPAN LPAREN . LBRACE RowVecListSize4 RBRACE RPAREN   (rule 9)
 
-    $default	reduce using rule 16 (Op)
+    LBRACE	shift, and go to state 17
 
 
 
 state 9
 
-    Op  ->  MINUS .   (rule 17)
+    Number  ->  INT . DIVIDE INT   (rule 20)
+    Number  ->  INT .   (rule 22)
 
-    $default	reduce using rule 17 (Op)
+    DIVIDE	shift, and go to state 18
+
+    $default	reduce using rule 22 (Number)
 
 
 
 state 10
 
-    RowVec  ->  LPAREN Number . COMMA Number RPAREN   (rule 7)
-    RowVec  ->  LPAREN Number . COMMA Number COMMA Number RPAREN   (rule 8)
-    RowVec  ->  LPAREN Number . COMMA Number COMMA Number COMMA Number RPAREN   (rule 9)
+    Op  ->  PLUS .   (rule 24)
 
-    COMMA	shift, and go to state 15
+    $default	reduce using rule 24 (Op)
 
 
 
 state 11
 
-    Number  ->  Op . INT DIVIDE INT   (rule 12)
-    Number  ->  Op . INT   (rule 13)
-    Number  ->  Op . INT DIVIDE Op INT   (rule 14)
+    Op  ->  MINUS .   (rule 25)
 
-    INT 	shift, and go to state 16
+    $default	reduce using rule 25 (Op)
 
 
 
 state 12
 
-    solutionSet  ->  LBRACE RowVec RBRACE . Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN   (rule 2)
-    solutionSet  ->  LBRACE RowVec RBRACE .   (rule 4)
+    RowVecSize2  ->  LPAREN Number . COMMA Number RPAREN   (rule 17)
+    RowVecSize3  ->  LPAREN Number . COMMA Number COMMA Number RPAREN   (rule 18)
+    RowVecSize4  ->  LPAREN Number . COMMA Number COMMA Number COMMA Number RPAREN   (rule 19)
 
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
-
-    $default	reduce using rule 4 (solutionSet)
-
-    Op  	go to state 17
+    COMMA	shift, and go to state 19
 
 
 
 state 13
 
-    solutionSet  ->  SPAN LPAREN LBRACE . RowVecList RBRACE RPAREN   (rule 3)
+    Number  ->  Op . INT DIVIDE INT   (rule 21)
+    Number  ->  Op . INT   (rule 23)
 
-    LPAREN	shift, and go to state 4
-
-    RowVecList	go to state 18
-    RowVec	go to state 19
+    INT 	shift, and go to state 20
 
 
 
 state 14
 
-    Number  ->  INT DIVIDE . INT   (rule 10)
-    Number  ->  INT DIVIDE . Op INT   (rule 15)
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE . Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN   (rule 2)
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE .   (rule 4)
 
-    INT 	shift, and go to state 20
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    $default	reduce using rule 4 (solutionSet)
 
     Op  	go to state 21
 
@@ -206,297 +224,706 @@ state 14
 
 state 15
 
-    RowVec  ->  LPAREN Number COMMA . Number RPAREN   (rule 7)
-    RowVec  ->  LPAREN Number COMMA . Number COMMA Number RPAREN   (rule 8)
-    RowVec  ->  LPAREN Number COMMA . Number COMMA Number COMMA Number RPAREN   (rule 9)
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE . Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN   (rule 5)
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE .   (rule 7)
 
-    INT 	shift, and go to state 7
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
 
-    Number	go to state 22
-    Op  	go to state 11
+    $default	reduce using rule 7 (solutionSet)
+
+    Op  	go to state 22
 
 
 
 state 16
 
-    Number  ->  Op INT . DIVIDE INT   (rule 12)
-    Number  ->  Op INT .   (rule 13)
-    Number  ->  Op INT . DIVIDE Op INT   (rule 14)
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE . Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN   (rule 8)
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE .   (rule 10)
 
-    DIVIDE	shift, and go to state 23
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
 
-    $default	reduce using rule 13 (Number)
+    $default	reduce using rule 10 (solutionSet)
+
+    Op  	go to state 23
 
 
 
 state 17
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op . SPAN LPAREN LBRACE RowVecList RBRACE RPAREN   (rule 2)
+    solutionSet  ->  SPAN LPAREN LBRACE . RowVecListSize2 RBRACE RPAREN   (rule 3)
+    solutionSet  ->  SPAN LPAREN LBRACE . RowVecListSize3 RBRACE RPAREN   (rule 6)
+    solutionSet  ->  SPAN LPAREN LBRACE . RowVecListSize4 RBRACE RPAREN   (rule 9)
 
-    SPAN	shift, and go to state 24
+    LPAREN	shift, and go to state 4
+
+    RowVecListSize2	go to state 24
+    RowVecListSize3	go to state 25
+    RowVecListSize4	go to state 26
+    RowVecSize2	go to state 27
+    RowVecSize3	go to state 28
+    RowVecSize4	go to state 29
 
 
 
 state 18
 
-    solutionSet  ->  SPAN LPAREN LBRACE RowVecList . RBRACE RPAREN   (rule 3)
+    Number  ->  INT DIVIDE . INT   (rule 20)
 
-    RBRACE	shift, and go to state 25
+    INT 	shift, and go to state 30
 
 
 
 state 19
 
-    RowVecList  ->  RowVec . COMMA RowVecList   (rule 5)
-    RowVecList  ->  RowVec .   (rule 6)
+    RowVecSize2  ->  LPAREN Number COMMA . Number RPAREN   (rule 17)
+    RowVecSize3  ->  LPAREN Number COMMA . Number COMMA Number RPAREN   (rule 18)
+    RowVecSize4  ->  LPAREN Number COMMA . Number COMMA Number COMMA Number RPAREN   (rule 19)
 
-    COMMA	shift, and go to state 26
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
 
-    $default	reduce using rule 6 (RowVecList)
+    Number	go to state 31
+    Op  	go to state 13
 
 
 
 state 20
 
-    Number  ->  INT DIVIDE INT .   (rule 10)
+    Number  ->  Op INT . DIVIDE INT   (rule 21)
+    Number  ->  Op INT .   (rule 23)
 
-    $default	reduce using rule 10 (Number)
+    DIVIDE	shift, and go to state 32
+
+    $default	reduce using rule 23 (Number)
 
 
 
 state 21
 
-    Number  ->  INT DIVIDE Op . INT   (rule 15)
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op . SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN   (rule 2)
 
-    INT 	shift, and go to state 27
+    SPAN	shift, and go to state 33
 
 
 
 state 22
 
-    RowVec  ->  LPAREN Number COMMA Number . RPAREN   (rule 7)
-    RowVec  ->  LPAREN Number COMMA Number . COMMA Number RPAREN   (rule 8)
-    RowVec  ->  LPAREN Number COMMA Number . COMMA Number COMMA Number RPAREN   (rule 9)
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op . SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN   (rule 5)
 
-    RPAREN	shift, and go to state 28
-    COMMA	shift, and go to state 29
+    SPAN	shift, and go to state 34
 
 
 
 state 23
 
-    Number  ->  Op INT DIVIDE . INT   (rule 12)
-    Number  ->  Op INT DIVIDE . Op INT   (rule 14)
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op . SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN   (rule 8)
 
-    INT 	shift, and go to state 30
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
-
-    Op  	go to state 31
+    SPAN	shift, and go to state 35
 
 
 
 state 24
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op SPAN . LPAREN LBRACE RowVecList RBRACE RPAREN   (rule 2)
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize2 . RBRACE RPAREN   (rule 3)
 
-    LPAREN	shift, and go to state 32
+    RBRACE	shift, and go to state 36
 
 
 
 state 25
 
-    solutionSet  ->  SPAN LPAREN LBRACE RowVecList RBRACE . RPAREN   (rule 3)
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize3 . RBRACE RPAREN   (rule 6)
 
-    RPAREN	shift, and go to state 33
+    RBRACE	shift, and go to state 37
 
 
 
 state 26
 
-    RowVecList  ->  RowVec COMMA . RowVecList   (rule 5)
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize4 . RBRACE RPAREN   (rule 9)
 
-    LPAREN	shift, and go to state 4
-
-    RowVecList	go to state 34
-    RowVec	go to state 19
+    RBRACE	shift, and go to state 38
 
 
 
 state 27
 
-    Number  ->  INT DIVIDE Op INT .   (rule 15)
+    RowVecListSize2  ->  RowVecSize2 . COMMA RowVecListSize2   (rule 11)
+    RowVecListSize2  ->  RowVecSize2 .   (rule 12)
 
-    $default	reduce using rule 15 (Number)
+    COMMA	shift, and go to state 39
+
+    $default	reduce using rule 12 (RowVecListSize2)
 
 
 
 state 28
 
-    RowVec  ->  LPAREN Number COMMA Number RPAREN .   (rule 7)
+    RowVecListSize3  ->  RowVecSize3 . COMMA RowVecListSize3   (rule 13)
+    RowVecListSize3  ->  RowVecSize3 .   (rule 14)
 
-    $default	reduce using rule 7 (RowVec)
+    COMMA	shift, and go to state 40
+
+    $default	reduce using rule 14 (RowVecListSize3)
 
 
 
 state 29
 
-    RowVec  ->  LPAREN Number COMMA Number COMMA . Number RPAREN   (rule 8)
-    RowVec  ->  LPAREN Number COMMA Number COMMA . Number COMMA Number RPAREN   (rule 9)
+    RowVecListSize4  ->  RowVecSize4 . COMMA RowVecListSize4   (rule 15)
+    RowVecListSize4  ->  RowVecSize4 .   (rule 16)
 
-    INT 	shift, and go to state 7
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
+    COMMA	shift, and go to state 41
 
-    Number	go to state 35
-    Op  	go to state 11
+    $default	reduce using rule 16 (RowVecListSize4)
 
 
 
 state 30
 
-    Number  ->  Op INT DIVIDE INT .   (rule 12)
+    Number  ->  INT DIVIDE INT .   (rule 20)
 
-    $default	reduce using rule 12 (Number)
+    $default	reduce using rule 20 (Number)
 
 
 
 state 31
 
-    Number  ->  Op INT DIVIDE Op . INT   (rule 14)
+    RowVecSize2  ->  LPAREN Number COMMA Number . RPAREN   (rule 17)
+    RowVecSize3  ->  LPAREN Number COMMA Number . COMMA Number RPAREN   (rule 18)
+    RowVecSize4  ->  LPAREN Number COMMA Number . COMMA Number COMMA Number RPAREN   (rule 19)
 
-    INT 	shift, and go to state 36
+    RPAREN	shift, and go to state 42
+    COMMA	shift, and go to state 43
 
 
 
 state 32
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op SPAN LPAREN . LBRACE RowVecList RBRACE RPAREN   (rule 2)
+    Number  ->  Op INT DIVIDE . INT   (rule 21)
 
-    LBRACE	shift, and go to state 37
+    INT 	shift, and go to state 44
 
 
 
 state 33
 
-    solutionSet  ->  SPAN LPAREN LBRACE RowVecList RBRACE RPAREN .   (rule 3)
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op SPAN . LPAREN LBRACE RowVecListSize2 RBRACE RPAREN   (rule 2)
 
-    $default	reduce using rule 3 (solutionSet)
+    LPAREN	shift, and go to state 45
 
 
 
 state 34
 
-    RowVecList  ->  RowVec COMMA RowVecList .   (rule 5)
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op SPAN . LPAREN LBRACE RowVecListSize3 RBRACE RPAREN   (rule 5)
 
-    $default	reduce using rule 5 (RowVecList)
+    LPAREN	shift, and go to state 46
 
 
 
 state 35
 
-    RowVec  ->  LPAREN Number COMMA Number COMMA Number . RPAREN   (rule 8)
-    RowVec  ->  LPAREN Number COMMA Number COMMA Number . COMMA Number RPAREN   (rule 9)
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op SPAN . LPAREN LBRACE RowVecListSize4 RBRACE RPAREN   (rule 8)
 
-    RPAREN	shift, and go to state 38
-    COMMA	shift, and go to state 39
+    LPAREN	shift, and go to state 47
 
 
 
 state 36
 
-    Number  ->  Op INT DIVIDE Op INT .   (rule 14)
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize2 RBRACE . RPAREN   (rule 3)
 
-    $default	reduce using rule 14 (Number)
+    RPAREN	shift, and go to state 48
 
 
 
 state 37
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE . RowVecList RBRACE RPAREN   (rule 2)
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize3 RBRACE . RPAREN   (rule 6)
 
-    LPAREN	shift, and go to state 4
-
-    RowVecList	go to state 40
-    RowVec	go to state 19
+    RPAREN	shift, and go to state 49
 
 
 
 state 38
 
-    RowVec  ->  LPAREN Number COMMA Number COMMA Number RPAREN .   (rule 8)
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize4 RBRACE . RPAREN   (rule 9)
 
-    $default	reduce using rule 8 (RowVec)
+    RPAREN	shift, and go to state 50
 
 
 
 state 39
 
-    RowVec  ->  LPAREN Number COMMA Number COMMA Number COMMA . Number RPAREN   (rule 9)
+    RowVecListSize2  ->  RowVecSize2 COMMA . RowVecListSize2   (rule 11)
 
-    INT 	shift, and go to state 7
-    PLUS	shift, and go to state 8
-    MINUS	shift, and go to state 9
+    LPAREN	shift, and go to state 51
 
-    Number	go to state 41
-    Op  	go to state 11
+    RowVecListSize2	go to state 52
+    RowVecSize2	go to state 27
 
 
 
 state 40
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList . RBRACE RPAREN   (rule 2)
+    RowVecListSize3  ->  RowVecSize3 COMMA . RowVecListSize3   (rule 13)
 
-    RBRACE	shift, and go to state 42
+    LPAREN	shift, and go to state 53
+
+    RowVecListSize3	go to state 54
+    RowVecSize3	go to state 28
 
 
 
 state 41
 
-    RowVec  ->  LPAREN Number COMMA Number COMMA Number COMMA Number . RPAREN   (rule 9)
+    RowVecListSize4  ->  RowVecSize4 COMMA . RowVecListSize4   (rule 15)
 
-    RPAREN	shift, and go to state 43
+    LPAREN	shift, and go to state 55
+
+    RowVecListSize4	go to state 56
+    RowVecSize4	go to state 29
 
 
 
 state 42
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE . RPAREN   (rule 2)
+    RowVecSize2  ->  LPAREN Number COMMA Number RPAREN .   (rule 17)
 
-    RPAREN	shift, and go to state 44
+    $default	reduce using rule 17 (RowVecSize2)
 
 
 
 state 43
 
-    RowVec  ->  LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN .   (rule 9)
+    RowVecSize3  ->  LPAREN Number COMMA Number COMMA . Number RPAREN   (rule 18)
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA . Number COMMA Number RPAREN   (rule 19)
 
-    $default	reduce using rule 9 (RowVec)
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 57
+    Op  	go to state 13
 
 
 
 state 44
 
-    solutionSet  ->  LBRACE RowVec RBRACE Op SPAN LPAREN LBRACE RowVecList RBRACE RPAREN .   (rule 2)
+    Number  ->  Op INT DIVIDE INT .   (rule 21)
 
-    $default	reduce using rule 2 (solutionSet)
+    $default	reduce using rule 21 (Number)
 
 
 
 state 45
 
-    $   	go to state 46
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op SPAN LPAREN . LBRACE RowVecListSize2 RBRACE RPAREN   (rule 2)
+
+    LBRACE	shift, and go to state 58
 
 
 
 state 46
 
-    $   	go to state 47
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op SPAN LPAREN . LBRACE RowVecListSize3 RBRACE RPAREN   (rule 5)
+
+    LBRACE	shift, and go to state 59
 
 
 
 state 47
+
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op SPAN LPAREN . LBRACE RowVecListSize4 RBRACE RPAREN   (rule 8)
+
+    LBRACE	shift, and go to state 60
+
+
+
+state 48
+
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN .   (rule 3)
+
+    $default	reduce using rule 3 (solutionSet)
+
+
+
+state 49
+
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN .   (rule 6)
+
+    $default	reduce using rule 6 (solutionSet)
+
+
+
+state 50
+
+    solutionSet  ->  SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN .   (rule 9)
+
+    $default	reduce using rule 9 (solutionSet)
+
+
+
+state 51
+
+    RowVecSize2  ->  LPAREN . Number COMMA Number RPAREN   (rule 17)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 61
+    Op  	go to state 13
+
+
+
+state 52
+
+    RowVecListSize2  ->  RowVecSize2 COMMA RowVecListSize2 .   (rule 11)
+
+    $default	reduce using rule 11 (RowVecListSize2)
+
+
+
+state 53
+
+    RowVecSize3  ->  LPAREN . Number COMMA Number COMMA Number RPAREN   (rule 18)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 62
+    Op  	go to state 13
+
+
+
+state 54
+
+    RowVecListSize3  ->  RowVecSize3 COMMA RowVecListSize3 .   (rule 13)
+
+    $default	reduce using rule 13 (RowVecListSize3)
+
+
+
+state 55
+
+    RowVecSize4  ->  LPAREN . Number COMMA Number COMMA Number COMMA Number RPAREN   (rule 19)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 63
+    Op  	go to state 13
+
+
+
+state 56
+
+    RowVecListSize4  ->  RowVecSize4 COMMA RowVecListSize4 .   (rule 15)
+
+    $default	reduce using rule 15 (RowVecListSize4)
+
+
+
+state 57
+
+    RowVecSize3  ->  LPAREN Number COMMA Number COMMA Number . RPAREN   (rule 18)
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA Number . COMMA Number RPAREN   (rule 19)
+
+    RPAREN	shift, and go to state 64
+    COMMA	shift, and go to state 65
+
+
+
+state 58
+
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE . RowVecListSize2 RBRACE RPAREN   (rule 2)
+
+    LPAREN	shift, and go to state 51
+
+    RowVecListSize2	go to state 66
+    RowVecSize2	go to state 27
+
+
+
+state 59
+
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE . RowVecListSize3 RBRACE RPAREN   (rule 5)
+
+    LPAREN	shift, and go to state 53
+
+    RowVecListSize3	go to state 67
+    RowVecSize3	go to state 28
+
+
+
+state 60
+
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE . RowVecListSize4 RBRACE RPAREN   (rule 8)
+
+    LPAREN	shift, and go to state 55
+
+    RowVecListSize4	go to state 68
+    RowVecSize4	go to state 29
+
+
+
+state 61
+
+    RowVecSize2  ->  LPAREN Number . COMMA Number RPAREN   (rule 17)
+
+    COMMA	shift, and go to state 69
+
+
+
+state 62
+
+    RowVecSize3  ->  LPAREN Number . COMMA Number COMMA Number RPAREN   (rule 18)
+
+    COMMA	shift, and go to state 70
+
+
+
+state 63
+
+    RowVecSize4  ->  LPAREN Number . COMMA Number COMMA Number COMMA Number RPAREN   (rule 19)
+
+    COMMA	shift, and go to state 71
+
+
+
+state 64
+
+    RowVecSize3  ->  LPAREN Number COMMA Number COMMA Number RPAREN .   (rule 18)
+
+    $default	reduce using rule 18 (RowVecSize3)
+
+
+
+state 65
+
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA Number COMMA . Number RPAREN   (rule 19)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 72
+    Op  	go to state 13
+
+
+
+state 66
+
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 . RBRACE RPAREN   (rule 2)
+
+    RBRACE	shift, and go to state 73
+
+
+
+state 67
+
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 . RBRACE RPAREN   (rule 5)
+
+    RBRACE	shift, and go to state 74
+
+
+
+state 68
+
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 . RBRACE RPAREN   (rule 8)
+
+    RBRACE	shift, and go to state 75
+
+
+
+state 69
+
+    RowVecSize2  ->  LPAREN Number COMMA . Number RPAREN   (rule 17)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 76
+    Op  	go to state 13
+
+
+
+state 70
+
+    RowVecSize3  ->  LPAREN Number COMMA . Number COMMA Number RPAREN   (rule 18)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 77
+    Op  	go to state 13
+
+
+
+state 71
+
+    RowVecSize4  ->  LPAREN Number COMMA . Number COMMA Number COMMA Number RPAREN   (rule 19)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 78
+    Op  	go to state 13
+
+
+
+state 72
+
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA Number COMMA Number . RPAREN   (rule 19)
+
+    RPAREN	shift, and go to state 79
+
+
+
+state 73
+
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE . RPAREN   (rule 2)
+
+    RPAREN	shift, and go to state 80
+
+
+
+state 74
+
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE . RPAREN   (rule 5)
+
+    RPAREN	shift, and go to state 81
+
+
+
+state 75
+
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE . RPAREN   (rule 8)
+
+    RPAREN	shift, and go to state 82
+
+
+
+state 76
+
+    RowVecSize2  ->  LPAREN Number COMMA Number . RPAREN   (rule 17)
+
+    RPAREN	shift, and go to state 42
+
+
+
+state 77
+
+    RowVecSize3  ->  LPAREN Number COMMA Number . COMMA Number RPAREN   (rule 18)
+
+    COMMA	shift, and go to state 83
+
+
+
+state 78
+
+    RowVecSize4  ->  LPAREN Number COMMA Number . COMMA Number COMMA Number RPAREN   (rule 19)
+
+    COMMA	shift, and go to state 84
+
+
+
+state 79
+
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA Number COMMA Number RPAREN .   (rule 19)
+
+    $default	reduce using rule 19 (RowVecSize4)
+
+
+
+state 80
+
+    solutionSet  ->  LBRACE RowVecSize2 RBRACE Op SPAN LPAREN LBRACE RowVecListSize2 RBRACE RPAREN .   (rule 2)
+
+    $default	reduce using rule 2 (solutionSet)
+
+
+
+state 81
+
+    solutionSet  ->  LBRACE RowVecSize3 RBRACE Op SPAN LPAREN LBRACE RowVecListSize3 RBRACE RPAREN .   (rule 5)
+
+    $default	reduce using rule 5 (solutionSet)
+
+
+
+state 82
+
+    solutionSet  ->  LBRACE RowVecSize4 RBRACE Op SPAN LPAREN LBRACE RowVecListSize4 RBRACE RPAREN .   (rule 8)
+
+    $default	reduce using rule 8 (solutionSet)
+
+
+
+state 83
+
+    RowVecSize3  ->  LPAREN Number COMMA Number COMMA . Number RPAREN   (rule 18)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 85
+    Op  	go to state 13
+
+
+
+state 84
+
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA . Number COMMA Number RPAREN   (rule 19)
+
+    INT 	shift, and go to state 9
+    PLUS	shift, and go to state 10
+    MINUS	shift, and go to state 11
+
+    Number	go to state 86
+    Op  	go to state 13
+
+
+
+state 85
+
+    RowVecSize3  ->  LPAREN Number COMMA Number COMMA Number . RPAREN   (rule 18)
+
+    RPAREN	shift, and go to state 64
+
+
+
+state 86
+
+    RowVecSize4  ->  LPAREN Number COMMA Number COMMA Number . COMMA Number RPAREN   (rule 19)
+
+    COMMA	shift, and go to state 65
+
+
+
+state 87
+
+    $   	go to state 88
+
+
+
+state 88
+
+    $   	go to state 89
+
+
+
+state 89
 
     $default	accept
